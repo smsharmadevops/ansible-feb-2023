@@ -378,7 +378,7 @@ jegan@tektutor.org $ <b>ansible-doc -l |wc -l</b>
 ## Ansible Playbook Structure
 ![Ansible Playbook Structure](PlaybookStructure.png)
 
-##  ⛹️‍♂️ Lab - Default task that gathers facts about each ansible node
+## ⛹️‍♂️ Lab - Default task that gathers facts about each ansible node
 Every play in the Playbook will invoke setup module implicitly to collects facts about each ansible node.  This may be suppressed/disabled, however using these facts we could perform conditional installations.
 
 ```
@@ -391,7 +391,7 @@ ansible -i inventory ubuntu1 -m setup
 
 Expected output
 <pre>
- jegan@tektutor.org $ <b>ansible -i inventory ubuntu1 -m setup</b>
+jegan@tektutor.org $ <b>ansible -i inventory ubuntu1 -m setup</b>
 ubuntu1 | SUCCESS => {
     "ansible_facts": {
         "ansible_apparmor": {
@@ -1091,7 +1091,7 @@ logout
 Connection to localhost closed.
 </pre>
 
-## Lab - Refactoring inventory file by seggrating host variables and group variables
+## ⛹️‍♂️ Lab - Refactoring inventory file by seggrating host variables and group variables
 ```
 cd ~/ansible-feb-2023
 git pull
