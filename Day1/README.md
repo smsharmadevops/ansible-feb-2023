@@ -1065,7 +1065,4 @@ REPOSITORY                                TAG       IMAGE ID       CREATED      
 tektutor/ubuntu-ansible-node              latest    9631602e39f4   4 hours ago     220MB
 centos                                    8         5d0da3dc9764   17 months ago   231MB
 ubuntu                                    16.04     b6f507652425   18 months ago   135MB
-ansible/awx                               17.1.0    599918776cf2   23 months ago   1.41GB
-
-
 </pre>
