@@ -336,3 +336,11 @@ ubuntu1
 ubuntu2 | CHANGED | rc=0 >>
 ubuntu2
 </pre>
+
+## Lab - Finding help documentation about any specific ansible modules
+```
+ansible-doc shell
+ansible-doc ping
+ansible-doc copy
+```
+
