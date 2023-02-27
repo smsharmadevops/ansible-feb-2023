@@ -292,8 +292,8 @@ Expected output
 <pre>
 jegan@tektutor.org $ <b>cat inventory</b>
 [all]
-ubuntu1 ansible_port=2001 ansible_user=root ansible_host=localhost ansible_private_key_file=~/.ssh/ida_rsa
-ubuntu2 ansible_port=2002 ansible_user=root ansible_host=localhost ansible_private_key_file=~/.ssh/ida_rsa
+ubuntu1 ansible_port=2001 ansible_user=root ansible_host=localhost ansible_private_key_file=~/.ssh/id_rsa
+ubuntu2 ansible_port=2002 ansible_user=root ansible_host=localhost ansible_private_key_file=~/.ssh/id_rsa
 
 jegan@tektutor.org $ <b>ansible -i inventory all -m ping</b>
 ubuntu2 | SUCCESS => {
