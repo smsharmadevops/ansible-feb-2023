@@ -979,7 +979,7 @@ cd ~/ansible-feb-2023
 git pull
 
 cd Day1/ansible
-ansible-playbook -i ping-playbook.yml
+ansible-playbook -i inventory ping-playbook.yml
 ```
 
 Expected output
