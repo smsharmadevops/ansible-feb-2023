@@ -165,6 +165,13 @@ ansible/awx                               17.1.0    599918776cf2   23 months ago
 </pre>
 
 
+## Cloning TekTutor Training Repository ( one-time activity )
+```
+cd ~
+git clone https://github.com/tektutor/ansible-feb-2023.git
+
+```
+
 ## ⛹️‍♂️ Lab - Let's create a Custom Ubuntu Ansible Node Docker Image
 ```
 cd ~/ansible-feb-2023
