@@ -311,3 +311,28 @@ ubuntu1 | SUCCESS => {
     "ping": "pong"
 }
 </pre>
+
+## Lab - Listing the IP address and hostname of Ubuntu Ansible nodes
+```
+cd ~/ansible-feb-2023
+git pull
+cd Day1/ansible
+
+ansible -i inventory all -m shell -a "hostname -i"
+ansible -i inventory all -m shell -a "hostname"
+```
+
+Expected output
+<pre>
+jegan@tektutor.org $ <b>ansible -i inventory all -m shell -a "hostname -i"</b>
+ubuntu1 | CHANGED | rc=0 >>
+172.17.0.2
+ubuntu2 | CHANGED | rc=0 >>
+172.17.0.3
+
+jegan@tektutor.org $ <b>ansible -i inventory all -m shell -a "hostname"</b>
+ubuntu1 | CHANGED | rc=0 >>
+ubuntu1
+ubuntu2 | CHANGED | rc=0 >>
+ubuntu2
+</pre>
