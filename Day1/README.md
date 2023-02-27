@@ -346,6 +346,8 @@ ansible-doc copy
 
 Expected output
 ![Ansible Shell Module](ansible-shell.png)
+![Ansible Ping Module](ansible-ping.png)
+![Ansible Copy Module](ansible-copy.png)
 
 
 
