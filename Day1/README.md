@@ -337,7 +337,7 @@ ubuntu2 | CHANGED | rc=0 >>
 ubuntu2
 </pre>
 
-## Lab - Finding help documentation about any specific ansible modules
+## ⛹️‍ Lab - Finding help documentation about any specific ansible modules
 ```
 ansible-doc shell
 ansible-doc ping
@@ -350,7 +350,7 @@ Expected output
 ![Ansible Copy Module](ansible-copy.png)
 
 
-## Lab - Finding total number of Ansible modules supported by your ansible version
+## ⛹️‍♂️ Lab - Finding total number of Ansible modules supported by your ansible version
 ```
 ansible-doc -l|wc -l
 ```
