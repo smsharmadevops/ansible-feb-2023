@@ -969,5 +969,32 @@ ubuntu1 | SUCCESS => {
     },
     "changed": false
 }
+</pre>
 
+## Lab - Executing your first Ansible Playbook
+```
+cd ~/ansible-feb-2023
+git pull
+
+cd Day1/ansible
+ansible-playbook -i ping-playbook.yml
+```
+
+Expected output
+<pre>
+ jegan@tektutor.org $ <b>ansible-playbook -i inventory ping-playbook.yml</b>
+
+PLAY [Pings the ansible nodes] *********************************************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************************
+ok: [ubuntu2]
+ok: [ubuntu1]
+
+TASK [Ping the ubuntu ansible node] ****************************************************************************************************
+ok: [ubuntu2]
+ok: [ubuntu1]
+
+PLAY RECAP *****************************************************************************************************************************
+ubuntu1                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ubuntu2                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 </pre>
