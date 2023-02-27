@@ -42,6 +42,9 @@
     - apt module helps in software installation/uninstallation/ugrade on Debain based ansible nodes
     - yum module helps in software installation/uninstallation/upgrade on Red Hat OS family
 
+## Ansible High-Level Architecture
+![Ansible High Level Architecture](AnsibleHighLevelArchitecture.png)
+
 ## What is Hypervisor?
 - Virtualization Technology
 - Processors
