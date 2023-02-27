@@ -179,7 +179,7 @@ git pull
 cd Day1/CustomAnsibleDockerImages/ubuntu
 ssh-keygen
 cp ~/.ssh/id_rsa.pub authorized_keys
-docker build -t tektutor/ansible-ubuntu-node:latest .
+docker build -t tektutor/ubuntu-ansible-node:latest .
 ```
 
 Expected output
