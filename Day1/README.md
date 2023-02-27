@@ -350,4 +350,14 @@ Expected output
 ![Ansible Copy Module](ansible-copy.png)
 
 
+## Lab - Finding total number of Ansible modules supported by your ansible version
+```
+ansible-doc -l|wc -l
+```
 
+Expected output
+This output might vary from one version of Ansible to the other.
+<pre>
+jegan@tektutor.org $ <b>ansible-doc -l |wc -l</b>
+7466
+</pre>
