@@ -390,6 +390,8 @@ jegan@tektutor.org $ <b>ansible-doc -l |wc -l</b>
 ![Ansible Playbook Structure](PlaybookStructure.png)
 
 ##  ⛹️‍♂️ Lab - Default task that gathers facts about each ansible node
+Every play in the Playbook will invoke setup module implicitly to collects facts about each ansible node.  This may be suppressed/disabled, however using these facts we could perform conditional installations.
+
 ```
 cd ~/ansible-feb-2023
 git pull
