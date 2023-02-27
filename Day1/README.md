@@ -1000,3 +1000,26 @@ PLAY RECAP *********************************************************************
 ubuntu1                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ubuntu2                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 </pre>
+
+## What happens internally when we execute an Ansible ad-hoc command?
+```
+cd ~/ansible-feb-2023
+git pull
+cd Day1/ansible
+ansible -i inventory all -m ping
+```
+### Note
+<pre>
+ACM - Ansible Controller Machine ( this is the machine where ansible is installed )
+Ansible Node - This is the server where you wish to install software via Ansible from ACM.
+
+<pre>
+1. On the ACM machine, ansible will create a ~/.ansible/tmp
+2. Ansible copies the ping.py ansible module from /usr/lib/python3.11/site-packages/ansible/modules/ping.py to the ~/.ansible/tmp directory
+3. Ansible then, copies all the module imports performed in the ping.py into a single python file on ~/.ansible/tmp/ping.py file
+4. Ansible copies the ping.py from ACM to the Ansible node ~/.ansible/tmp/Ansibal_ping.py using sftp/scp tool
+5. Ansible gives execute permission to the ~/.ansible/tmp/Ansibal_ping.py on the Ansible node
+6. Using Python, Ansible will execute the Ansibal_ping.py on the ansible node and stores the output
+7. Ansible deletes the ~/.ansible/tmp directory on the Ansible node
+8. Gives a summary of execution on the ACM
+</pre>
