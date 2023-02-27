@@ -212,3 +212,23 @@ REPOSITORY                                TAG       IMAGE ID       CREATED      
 <b>tektutor/ubuntu-ansible-node              latest    9631602e39f4   5 seconds ago   220MB</b>
 ubuntu                                    16.04     b6f507652425   18 months ago   135MB
 </pre>
+
+
+## Lab - Creating couple of ubuntu container from our Custom Ansible Ubuntu Docker Image
+```
+docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:80 tektutor/ubuntu-ansible-node
+docker run -d --name ubuntu2 --hostname ubuntu2 -p 2002:22 -p 8002:80 tektutor/ubuntu-ansible-node
+```
+
+Expected output
+<pre>
+jegan@tektutor.org $ <b>docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:80 tektutor/ubuntu-ansible-node</b>
+e2a39b13269eeb6e5535af743d4ae50eb6a86985a3f220778f186e710725ed20
+jegan@tektutor.org $ <b>docker run -d --name ubuntu2 --hostname ubuntu2 -p 2002:22 -p 8002:80 tektutor/ubuntu-ansible-node</b>
+1956d053c6ffc3c46d87fa00ea7b17937ff3a45b7b3a9eb15817e74cd5463206
+
+jegan@tektutor.org $ <b>docker ps</b>
+CONTAINER ID   IMAGE                          COMMAND               CREATED          STATUS          PORTS                                                                          NAMES
+1956d053c6ff   tektutor/ubuntu-ansible-node   "/usr/sbin/sshd -D"   2 seconds ago    Up 2 seconds    0.0.0.0:2002->22/tcp, :::2002->22/tcp, 0.0.0.0:8002->80/tcp, :::8002->80/tcp   ubuntu2
+e2a39b13269e   tektutor/ubuntu-ansible-node   "/usr/sbin/sshd -D"   12 seconds ago   Up 12 seconds   0.0.0.0:2001->22/tcp, :::2001->22/tcp, 0.0.0.0:8001->80/tcp, :::8001->80/tcp   ubuntu1
+</pre>
