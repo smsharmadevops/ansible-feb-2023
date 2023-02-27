@@ -42,3 +42,22 @@
     - apt module helps in software installation/uninstallation/ugrade on Debain based ansible nodes
     - yum module helps in software installation/uninstallation/upgrade on Red Hat OS family
 
+# Ansible Commands
+
+## Finding the ansible version
+```
+ansible --version
+```
+Expected output
+<pre>
+ jegan@tektutor.org $ <b>ansible --version</b>
+ansible [core 2.14.2]
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = ['/home/jegan/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3.11/site-packages/ansible
+  ansible collection location = /home/jegan/.ansible/collections:/usr/share/ansible/collections
+  executable location = /usr/bin/ansible
+  python version = 3.11.1 (main, Jan  6 2023, 00:00:00) [GCC 12.2.1 20221121 (Red Hat 12.2.1-4)] (/usr/bin/python3)
+  jinja version = 3.0.3
+  libyaml = False
+</pre>
