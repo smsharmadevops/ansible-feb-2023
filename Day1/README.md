@@ -61,3 +61,33 @@ ansible [core 2.14.2]
   jinja version = 3.0.3
   libyaml = False
 </pre>
+
+## Verifying docker version and test if docker commands are working without any permission issues
+```
+docker --version
+docker images
+```
+
+Expected output
+<pre>
+jegan@tektutor.org $ <b>docker --version</b>
+Docker version 23.0.1, build a5ee5b1
+
+jegan@tektutor.org $ <b>docker images</b>
+REPOSITORY                                TAG       IMAGE ID       CREATED         SIZE
+tektutor/ansible-centos-node              latest    77826cd90477   2 days ago      220MB
+tektutor/ansible-ubuntu-node              latest    77826cd90477   2 days ago      220MB
+bitnami/prometheus                        latest    0b5d3ab5c074   3 days ago      312MB
+bitnami/grafana                           latest    8ad8324f3626   3 days ago      446MB
+bitnami/mysql                             latest    85ae5eff30c3   5 days ago      515MB
+csanchez/maven                            latest    6701ab932f19   9 days ago      528MB
+docker.bintray.io/jfrog/artifactory-oss   latest    4809cef53f93   2 weeks ago     1.48GB
+postgres                                  12        2c278af658a7   2 weeks ago     373MB
+redis                                     latest    2f66aad5324a   2 weeks ago     117MB
+nginx                                     latest    3f8a00f137a0   2 weeks ago     142MB
+sonarqube                                 latest    27d02b3b63c0   3 weeks ago     614MB
+hello-world                               latest    feb5d9fea6a5   17 months ago   13.3kB
+centos                                    8         5d0da3dc9764   17 months ago   231MB
+ubuntu                                    16.04     b6f507652425   18 months ago   135MB
+ansible/awx                               17.1.0    599918776cf2   23 months ago   1.41GB
+</pre>
