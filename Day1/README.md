@@ -117,6 +117,9 @@
 - Microsoft OS Kernel can't be separated from the OS, it is not modular, OS Kernel and the OS itself is strongly coupled, hence we can't separate out the Microsoft OS Kernel alone
 - It is for this reason, Linux doesn't support running a .Net application containers on Unix/Linux/Mac.
 
+## Hypervisor vs Docker High Level Architecure
+![Architecture](HypervisorDockerArchitecture.png)
+
 # Ansible Commands
 
 ## Finding the ansible version
@@ -364,3 +367,6 @@ This output might vary from one version of Ansible to the other.
 jegan@tektutor.org $ <b>ansible-doc -l |wc -l</b>
 7466
 </pre>
+
+## Ansible Playbook Structure
+![Ansible Playbook Structure](PlaybookStructure.png)
