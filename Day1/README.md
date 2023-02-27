@@ -25,6 +25,7 @@
   - follows PULL based architecture
 
 ## Ansible
+- developed by Michael Deehan in Python ( a former Red Hat employee )
 - agentless
   - doesn't require any special proprietary software on the ansible nodes where software installation automation must be done
 - doesn't follow client/server architecture
