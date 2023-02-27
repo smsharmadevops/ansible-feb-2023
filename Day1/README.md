@@ -1090,3 +1090,109 @@ jegan@tektutor.org $ <b>ssh -p 2004 root@localhost</b>
 logout
 Connection to localhost closed.
 </pre>
+
+## Lab - Refactoring inventory file by seggrating host variables and group variables
+```
+cd ~/ansible-feb-2023
+git pull
+
+cd Day1/ansible
+cat inventory_before_refactoring
+cat inventory
+ansible -i inventory_before_refactoring all -m ping
+ansible -i inventory all -m ping
+```
+
+Expected output
+<pre>
+jegan@tektutor.org $ <b>cat inventory_before_refactoring</b>
+[all]
+ubuntu1 ansible_port=2001 ansible_host=localhost ansible_user=root ansible_private_key_file=~/.ssh/id_rsa
+ubuntu2 ansible_port=2002 ansible_host=localhost ansible_user=root ansible_private_key_file=~/.ssh/id_rsa
+centos1 ansible_port=2003 ansible_host=localhost ansible_user=root ansible_private_key_file=~/.ssh/id_rsa
+centos2 ansible_port=2004 ansible_host=localhost ansible_user=root ansible_private_key_file=~/.ssh/id_rsa
+
+[dev]
+ubuntu[1:2]
+
+[qa]
+centos[1:2]
+
+jegan@tektutor.org $ <b>cat inventory</b>
+[all]
+ubuntu1 ansible_port=2001
+ubuntu2 ansible_port=2002
+centos1 ansible_port=2003
+centos2 ansible_port=2004
+
+[all:vars]
+ansible_user=root
+ansible_host=localhost
+ansible_private_key_file=~/.ssh/id_rsa
+
+[qa]
+centos[1:2]
+
+[dev]
+ubuntu[1:2]
+
+jegan@tektutor.org $ <b>ansible -i inventory_before_refactoring all -m ping</b>
+ubuntu1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+ubuntu2 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+centos1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+centos2 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+
+jegan@tektutor.org $ <b>ansible -i inventory all -m ping</b>
+ubuntu2 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+ubuntu1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+centos1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+centos2 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+</pre>
