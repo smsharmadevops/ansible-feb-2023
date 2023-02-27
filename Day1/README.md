@@ -25,6 +25,7 @@
   - follows PULL based architecture
 
 ## Ansible
+- developed by Michael Deehan in Python ( a former Red Hat employee )
 - agentless
   - doesn't require any special proprietary software on the ansible nodes where software installation automation must be done
 - doesn't follow client/server architecture
@@ -171,17 +172,6 @@ Docker version 23.0.1, build a5ee5b1
 
 jegan@tektutor.org $ <b>docker images</b>
 REPOSITORY                                TAG       IMAGE ID       CREATED         SIZE
-tektutor/ansible-centos-node              latest    77826cd90477   2 days ago      220MB
-tektutor/ansible-ubuntu-node              latest    77826cd90477   2 days ago      220MB
-bitnami/prometheus                        latest    0b5d3ab5c074   3 days ago      312MB
-bitnami/grafana                           latest    8ad8324f3626   3 days ago      446MB
-bitnami/mysql                             latest    85ae5eff30c3   5 days ago      515MB
-csanchez/maven                            latest    6701ab932f19   9 days ago      528MB
-docker.bintray.io/jfrog/artifactory-oss   latest    4809cef53f93   2 weeks ago     1.48GB
-postgres                                  12        2c278af658a7   2 weeks ago     373MB
-redis                                     latest    2f66aad5324a   2 weeks ago     117MB
-nginx                                     latest    3f8a00f137a0   2 weeks ago     142MB
-sonarqube                                 latest    27d02b3b63c0   3 weeks ago     614MB
 hello-world                               latest    feb5d9fea6a5   17 months ago   13.3kB
 centos                                    8         5d0da3dc9764   17 months ago   231MB
 ubuntu                                    16.04     b6f507652425   18 months ago   135MB
@@ -193,7 +183,6 @@ ansible/awx                               17.1.0    599918776cf2   23 months ago
 ```
 cd ~
 git clone https://github.com/tektutor/ansible-feb-2023.git
-
 ```
 
 ## ⛹️‍♂️ Lab - Let's create a Custom Ubuntu Ansible Node Docker Image
@@ -1008,10 +997,14 @@ git pull
 cd Day1/ansible
 ansible -i inventory all -m ping
 ```
+
 ### Note
 <pre>
 ACM - Ansible Controller Machine ( this is the machine where ansible is installed )
 Ansible Node - This is the server where you wish to install software via Ansible from ACM.
+</pre>
+
+What ansible does when we run an ansible ad-hoc command?
 
 <pre>
 1. On the ACM machine, ansible will create a ~/.ansible/tmp
@@ -1065,7 +1058,35 @@ REPOSITORY                                TAG       IMAGE ID       CREATED      
 tektutor/ubuntu-ansible-node              latest    9631602e39f4   4 hours ago     220MB
 centos                                    8         5d0da3dc9764   17 months ago   231MB
 ubuntu                                    16.04     b6f507652425   18 months ago   135MB
-ansible/awx                               17.1.0    599918776cf2   23 months ago   1.41GB
+</pre>
 
+### Creating couple of centos containers using our Custom Ansible CentOS Docker Image
+```
+docker run -d --name centos1 --hostname centos1 -p 2003:22 -p 8003:80 tektutor/centos-ansible-node
+docker run -d --name centos2 --hostname centos2 -p 2004:22 -p 8004:80 tektutor/centos-ansible-node
+```
 
+Expected output
+<pre>
+jegan@tektutor.org $ <b>docker run -d --name centos1 --hostname centos1 -p 2003:22 -p 8003:80 tektutor/centos-ansible-node</b>
+5d3d6f891065a4bbd6ab23cca972ec0b39c236dd8baf289a2db1b4293d29757e
+ jegan@tektutor.org $ <b>docker run -d --name centos2 --hostname centos2 -p 2004:22 -p 8004:80 tektutor/centos-ansible-node</b>
+15420113acc190cbaa6088e7435a2afa52c4b9b963e034895f1131be323f60e4
+
+jegan@tektutor.org $ <b>docker ps</b>
+CONTAINER ID   IMAGE                          COMMAND               CREATED          STATUS          PORTS                                                                          NAMES
+<b>15420113acc1   tektutor/centos-ansible-node   "/usr/sbin/sshd -D"   4 seconds ago    Up 2 seconds    0.0.0.0:2004->22/tcp, :::2004->22/tcp, 0.0.0.0:8004->80/tcp, :::8004->80/tcp   centos2
+5d3d6f891065   tektutor/centos-ansible-node   "/usr/sbin/sshd -D"   13 seconds ago   Up 12 seconds   0.0.0.0:2003->22/tcp, :::2003->22/tcp, 0.0.0.0:8003->80/tcp, :::8003->80/tcp   centos1</b>
+1956d053c6ff   tektutor/ubuntu-ansible-node   "/usr/sbin/sshd -D"   3 hours ago      Up 3 hours      0.0.0.0:2002->22/tcp, :::2002->22/tcp, 0.0.0.0:8002->80/tcp, :::8002->80/tcp   ubuntu2
+e2a39b13269e   tektutor/ubuntu-ansible-node   "/usr/sbin/sshd -D"   3 hours ago      Up 3 hours      0.0.0.0:2001->22/tcp, :::2001->22/tcp, 0.0.0.0:8001->80/tcp, :::8001->80/tcp   ubuntu1
+
+jegan@tektutor.org $ <b>ssh -p 2003 root@localhost</b>
+[root@centos1 ~]# <b>exit</b>
+logout
+Connection to localhost closed.
+
+jegan@tektutor.org $ <b>ssh -p 2004 root@localhost</b>
+[root@centos2 ~]# <b>exit</b>
+logout
+Connection to localhost closed.
 </pre>
