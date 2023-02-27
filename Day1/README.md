@@ -214,7 +214,7 @@ ubuntu                                    16.04     b6f507652425   18 months ago
 </pre>
 
 
-## Lab - Creating couple of ubuntu container from our Custom Ansible Ubuntu Docker Image
+## ⛹️‍♂️ Lab - Creating couple of ubuntu container from our Custom Ansible Ubuntu Docker Image
 ```
 docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:80 tektutor/ubuntu-ansible-node
 docker run -d --name ubuntu2 --hostname ubuntu2 -p 2002:22 -p 8002:80 tektutor/ubuntu-ansible-node
