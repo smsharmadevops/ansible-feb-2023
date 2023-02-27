@@ -1023,3 +1023,49 @@ Ansible Node - This is the server where you wish to install software via Ansible
 7. Ansible deletes the ~/.ansible/tmp directory on the Ansible node
 8. Gives a summary of execution on the ACM
 </pre>
+
+
+## ⛹️‍♂️ Lab - Building CentOS Ansible Node Image
+```
+cd ~/ansible-feb-2023
+git pull
+
+cd Day1/CustomAnsibleDockerImages/centos
+cp ~/.ssh/id_rsa.pub authorized_keys
+docker build -t tektutor/centos-ansible-node:latest .
+```
+
+Expected output
+<pre>jegan@tektutor.org $ <b>docker build -t tektutor/centos-ansible-node:latest .</b>
+[+] Building 2.3s (14/14) FINISHED                                                                                                      
+ => [internal] load build definition from Dockerfile                                                                               0.0s
+ => => transferring dockerfile: 617B                                                                                               0.0s
+ => [internal] load .dockerignore                                                                                                  0.0s
+ => => transferring context: 2B                                                                                                    0.0s
+ => [internal] load metadata for docker.io/library/centos:centos7                                                                  2.2s
+ => [1/9] FROM docker.io/library/centos:centos7@sha256:be65f488b7764ad3638f236b7b515b3678369a5124c47b8d32916d6487418ea4            0.0s
+ => [internal] load build context                                                                                                  0.0s
+ => => transferring context: 675B                                                                                                  0.0s
+ => CACHED [2/9] RUN yum install -y which openssh-clients openssh-server python3                                                   0.0s
+ => CACHED [3/9] RUN ssh-keygen -f /etc/ssh/ssh_host_rsa_key                                                                       0.0s
+ => CACHED [4/9] RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key                                                                0.0s
+ => CACHED [5/9] RUN sed -i '/pam_loginuid.so/c session    optional     pam_loginuid.so'  /etc/pam.d/sshd                          0.0s
+ => CACHED [6/9] RUN echo 'root:root' | chpasswd                                                                                   0.0s
+ => CACHED [7/9] RUN usermod -aG wheel root                                                                                        0.0s
+ => CACHED [8/9] RUN mkdir -p /root/.ssh                                                                                           0.0s
+ => [9/9] COPY authorized_keys /root/.ssh/authorized_keys                                                                          0.0s
+ => exporting to image                                                                                                             0.0s
+ => => exporting layers                                                                                                            0.0s
+ => => writing image sha256:55cedf918dd65e9f9659cd15c1b6ae6dbd6e116fc3f7ebc87787916b047ca08f                                       0.0s
+ => => naming to docker.io/tektutor/centos-ansible-node:latest                                                                     0.0s
+ 
+jegan@tektutor.org $ <b>docker images</b>
+REPOSITORY                                TAG       IMAGE ID       CREATED         SIZE
+<b>tektutor/centos-ansible-node              latest    55cedf918dd6   5 seconds ago   457MB</b>
+tektutor/ubuntu-ansible-node              latest    9631602e39f4   4 hours ago     220MB
+centos                                    8         5d0da3dc9764   17 months ago   231MB
+ubuntu                                    16.04     b6f507652425   18 months ago   135MB
+ansible/awx                               17.1.0    599918776cf2   23 months ago   1.41GB
+
+
+</pre>
