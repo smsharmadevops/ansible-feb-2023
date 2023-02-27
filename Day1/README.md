@@ -312,7 +312,7 @@ ubuntu1 | SUCCESS => {
 }
 </pre>
 
-## Lab - Listing the IP address and hostname of Ubuntu Ansible nodes
+## ⛹️‍♂️ Lab - Listing the IP address and hostname of Ubuntu Ansible nodes
 ```
 cd ~/ansible-feb-2023
 git pull
