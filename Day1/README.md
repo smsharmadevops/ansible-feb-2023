@@ -179,7 +179,7 @@ git pull
 cd Day1/CustomAnsibleDockerImages/ubuntu
 ssh-keygen
 cp ~/.ssh/id_rsa.pub authorized_keys
-docker build -t tektutor/ansible-ubuntu-node:latest .
+docker build -t tektutor/ubuntu-ansible-node:latest .
 ```
 
 Expected output
@@ -211,4 +211,103 @@ jegan@tektutor.org $ <b>docker images</b>
 REPOSITORY                                TAG       IMAGE ID       CREATED         SIZE
 <b>tektutor/ubuntu-ansible-node              latest    9631602e39f4   5 seconds ago   220MB</b>
 ubuntu                                    16.04     b6f507652425   18 months ago   135MB
+</pre>
+
+
+## ⛹️‍♂️ Lab - Creating couple of ubuntu container from our Custom Ansible Ubuntu Docker Image
+```
+docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:80 tektutor/ubuntu-ansible-node
+docker run -d --name ubuntu2 --hostname ubuntu2 -p 2002:22 -p 8002:80 tektutor/ubuntu-ansible-node
+```
+
+Expected output
+<pre>
+jegan@tektutor.org $ <b>docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:80 tektutor/ubuntu-ansible-node</b>
+e2a39b13269eeb6e5535af743d4ae50eb6a86985a3f220778f186e710725ed20
+jegan@tektutor.org $ <b>docker run -d --name ubuntu2 --hostname ubuntu2 -p 2002:22 -p 8002:80 tektutor/ubuntu-ansible-node</b>
+1956d053c6ffc3c46d87fa00ea7b17937ff3a45b7b3a9eb15817e74cd5463206
+
+jegan@tektutor.org $ <b>docker ps</b>
+CONTAINER ID   IMAGE                          COMMAND               CREATED          STATUS          PORTS                                                                          NAMES
+1956d053c6ff   tektutor/ubuntu-ansible-node   "/usr/sbin/sshd -D"   2 seconds ago    Up 2 seconds    0.0.0.0:2002->22/tcp, :::2002->22/tcp, 0.0.0.0:8002->80/tcp, :::8002->80/tcp   ubuntu2
+e2a39b13269e   tektutor/ubuntu-ansible-node   "/usr/sbin/sshd -D"   12 seconds ago   Up 12 seconds   0.0.0.0:2001->22/tcp, :::2001->22/tcp, 0.0.0.0:8001->80/tcp, :::8001->80/tcp   ubuntu1
+</pre>
+
+#### Verify if you are able to connect to the container via SSH
+```
+ssh -p 2001 root@localhost
+ssh -p 2002 root@localhost
+```
+
+Expected output
+<pre>
+jegan@tektutor.org $ <b>ssh -p 2001 root@localhost</b>
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 6.1.12-200.fc37.x86_64 x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu1:~# <b>exit</b>
+logout
+Connection to localhost closed.
+
+jegan@tektutor.org $ <b>ssh -p 2002 root@localhost</b>
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 6.1.12-200.fc37.x86_64 x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu2:~# <b>exit</b>
+logout
+Connection to localhost closed.
+</pre>
+
+## ⛹️‍♂️ Lab - Running your first Ansible ad-hoc command
+```
+cd ~/ansible-feb-2023
+git pull
+cd Day1/ansible
+
+cat inventory
+ansible -i inventory all -m ping
+```
+
+Expected output
+<pre>
+jegan@tektutor.org $ <b>cat inventory</b>
+[all]
+ubuntu1 ansible_port=2001 ansible_user=root ansible_host=localhost ansible_private_key_file=~/.ssh/ida_rsa
+ubuntu2 ansible_port=2002 ansible_user=root ansible_host=localhost ansible_private_key_file=~/.ssh/ida_rsa
+
+jegan@tektutor.org $ <b>ansible -i inventory all -m ping</b>
+ubuntu2 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+ubuntu1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
 </pre>
