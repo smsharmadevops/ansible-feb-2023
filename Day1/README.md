@@ -389,7 +389,7 @@ jegan@tektutor.org $ <b>ansible-doc -l |wc -l</b>
 ## Ansible Playbook Structure
 ![Ansible Playbook Structure](PlaybookStructure.png)
 
-## Default task that gathers facts about each ansible node
+##  ⛹️‍♂️ Lab - Default task that gathers facts about each ansible node
 ```
 cd ~/ansible-feb-2023
 git pull
@@ -971,7 +971,7 @@ ubuntu1 | SUCCESS => {
 }
 </pre>
 
-## Lab - Executing your first Ansible Playbook
+## ⛹️‍♂️ Lab - Executing your first Ansible Playbook
 ```
 cd ~/ansible-feb-2023
 git pull
@@ -982,7 +982,7 @@ ansible-playbook -i ping-playbook.yml
 
 Expected output
 <pre>
- jegan@tektutor.org $ <b>ansible-playbook -i inventory ping-playbook.yml</b>
+jegan@tektutor.org $ <b>ansible-playbook -i inventory ping-playbook.yml</b>
 
 PLAY [Pings the ansible nodes] *********************************************************************************************************
 
