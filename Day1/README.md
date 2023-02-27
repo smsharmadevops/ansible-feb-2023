@@ -1091,7 +1091,7 @@ logout
 Connection to localhost closed.
 </pre>
 
-## ⛹️‍♂️ Lab - Refactoring inventory file by seggrating host variables and group variables
+## ⛹️‍♂️ Lab - Refactoring inventory file by segregating host variables and group variables
 ```
 cd ~/ansible-feb-2023
 git pull
