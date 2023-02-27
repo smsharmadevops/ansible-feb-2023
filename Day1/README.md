@@ -344,3 +344,8 @@ ansible-doc ping
 ansible-doc copy
 ```
 
+Expected output
+![Ansible Shell Module](ansible-shell.png)
+
+
+
