@@ -1058,3 +1058,34 @@ tektutor/ubuntu-ansible-node              latest    9631602e39f4   4 hours ago  
 centos                                    8         5d0da3dc9764   17 months ago   231MB
 ubuntu                                    16.04     b6f507652425   18 months ago   135MB
 </pre>
+
+### Creating couple of centos containers using our Custom Ansible CentOS Docker Image
+```
+docker run -d --name centos1 --hostname centos1 -p 2003:22 -p 8003:80 tektutor/centos-ansible-node
+docker run -d --name centos2 --hostname centos2 -p 2004:22 -p 8004:80 tektutor/centos-ansible-node
+```
+
+Expected output
+<pre>
+jegan@tektutor.org $ <b>docker run -d --name centos1 --hostname centos1 -p 2003:22 -p 8003:80 tektutor/centos-ansible-node</b>
+5d3d6f891065a4bbd6ab23cca972ec0b39c236dd8baf289a2db1b4293d29757e
+ jegan@tektutor.org $ <b>docker run -d --name centos2 --hostname centos2 -p 2004:22 -p 8004:80 tektutor/centos-ansible-node</b>
+15420113acc190cbaa6088e7435a2afa52c4b9b963e034895f1131be323f60e4
+
+jegan@tektutor.org $ <b>docker ps</b>
+CONTAINER ID   IMAGE                          COMMAND               CREATED          STATUS          PORTS                                                                          NAMES
+<b>15420113acc1   tektutor/centos-ansible-node   "/usr/sbin/sshd -D"   4 seconds ago    Up 2 seconds    0.0.0.0:2004->22/tcp, :::2004->22/tcp, 0.0.0.0:8004->80/tcp, :::8004->80/tcp   centos2
+5d3d6f891065   tektutor/centos-ansible-node   "/usr/sbin/sshd -D"   13 seconds ago   Up 12 seconds   0.0.0.0:2003->22/tcp, :::2003->22/tcp, 0.0.0.0:8003->80/tcp, :::8003->80/tcp   centos1</b>
+1956d053c6ff   tektutor/ubuntu-ansible-node   "/usr/sbin/sshd -D"   3 hours ago      Up 3 hours      0.0.0.0:2002->22/tcp, :::2002->22/tcp, 0.0.0.0:8002->80/tcp, :::8002->80/tcp   ubuntu2
+e2a39b13269e   tektutor/ubuntu-ansible-node   "/usr/sbin/sshd -D"   3 hours ago      Up 3 hours      0.0.0.0:2001->22/tcp, :::2001->22/tcp, 0.0.0.0:8001->80/tcp, :::8001->80/tcp   ubuntu1
+
+jegan@tektutor.org $ <b>ssh -p 2003 root@localhost</b>
+[root@centos1 ~]# <b>exit</b>
+logout
+Connection to localhost closed.
+
+jegan@tektutor.org $ <b>ssh -p 2004 root@localhost</b>
+[root@centos2 ~]# <b>exit</b>
+logout
+Connection to localhost closed.
+</pre>
