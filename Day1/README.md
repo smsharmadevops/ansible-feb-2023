@@ -41,6 +41,24 @@
     - service to manage services in Unix/Linux/Mac
     - apt module helps in software installation/uninstallation/ugrade on Debain based ansible nodes
     - yum module helps in software installation/uninstallation/upgrade on Red Hat OS family
+- Ansible comes 3 flavors
+  1. Ansible Core 
+     - opensource
+     - supports only CLI
+  2. AWX
+     - opensource
+     - this is developed on top of Ansible Core
+     - supports Webconsole (GUI)
+     - no support from Red Hat
+     - user management
+     - you can see the history of playbook execution and its logs
+  3. Red Hat Ansible Tower
+     - Enterprise Product from Red Hat
+     - this is developed on top of AWX
+     - supports Webconsole (GUI)
+     - you get support from Red Hat
+     - user management
+     - you can see the history of playbook execution and its logs
 
 ## Ansible High-Level Architecture
 ![Ansible High Level Architecture](AnsibleHighLevelArchitecture.png)
