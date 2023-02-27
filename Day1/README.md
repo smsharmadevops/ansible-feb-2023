@@ -165,7 +165,7 @@ ansible/awx                               17.1.0    599918776cf2   23 months ago
 </pre>
 
 
-## Let's create a Custom Ubuntu Ansible Node Docker Image
+## ⛹️‍♂️ Lab - Let's create a Custom Ubuntu Ansible Node Docker Image
 ```
 cd ~/ansible-feb-2023
 git pull
