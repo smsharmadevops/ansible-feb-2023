@@ -199,8 +199,8 @@ git pull
 cd Day2
 cat ansible.cfg
 
-ansible-playbook install-nginx-playbook --limit=ubuntu1
-ansible-playbook install-nginx-playbook --limit=ubuntu2
+ansible-playbook install-nginx-playbook.yml --limit=ubuntu1
+ansible-playbook install-nginx-playbook.yml --limit=ubuntu2
 cat ansible.log
 ```
 
@@ -257,3 +257,93 @@ jegan@tektutor.org $ <b>cat ansible.log</b>
 2023-02-28 10:40:16,670 p=19396 u=jegan n=ansible | PLAY RECAP *****************************************************************************************************************************
 2023-02-28 10:40:16,670 p=19396 u=jegan n=ansible | ubuntu2                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 </pre>
+
+
+## ⛹️‍♀️ Lab -Installing nginx and starting the nginx web server in Ubuntu ansible nodes
+
+```
+cd ~/ansible-feb-2023
+git pull
+
+cd Day2
+ansible-playbook install-nginx-playbook.yml
+curl http://localhost:8001
+curl http://localhost:8002
+```
+
+Expected output
+```
+jegan@tektutor.org $ <b>ansible-playbook install-nginx-playbook.yml</b>
+
+PLAY [This playbook will install,configure nginx web server and will deploy a custom web page into custom web root folder] *************
+
+TASK [Gathering Facts] *****************************************************************************************************************
+ok: [ubuntu2]
+ok: [ubuntu1]
+
+TASK [Install nginx Web Server in Ubuntu] **********************************************************************************************
+ok: [ubuntu2]
+ok: [ubuntu1]
+
+TASK [Start the nginx web server in Ubuntu] ********************************************************************************************
+changed: [ubuntu2]
+changed: [ubuntu1]
+
+PLAY RECAP *****************************************************************************************************************************
+ubuntu1                    : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ubuntu2                    : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+jegan@tektutor.org $ <b>curl http://localhost:8001</b>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+
+jegan@tektutor.org $ <b>curl http://localhost:8002</b>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+```
