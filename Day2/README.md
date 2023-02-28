@@ -361,8 +361,8 @@ curl http://localhost:8002
 ```
 
 Expected output
-<pre>
- jegan@tektutor.org $ <b>ansible-playbook install-nginx-playbook.yml</b>
+```
+jegan@tektutor.org $ ansible-playbook install-nginx-playbook.yml
 
 PLAY [This playbook will install,configure nginx web server and will deploy a custom web page into custom web root folder] *************
 
@@ -394,9 +394,33 @@ PLAY RECAP *********************************************************************
 ubuntu1                    : ok=6    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ubuntu2                    : ok=6    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
-jegan@tektutor.org $ <b>curl http://localhost:8001</b>
-<h1>Nginx is working!</h1>
+jegan@tektutor.org $ curl http://localhost:8001
+<html>
+	<head>
+		<title>Welcome to DevOps!</title>
+	</head>
 
-jegan@tektutor.org $ <b>curl http://localhost:8002</b>
-<h1>Nginx is working!</h1>
-</pre>
+	<body>
+		<h3>Provisioned by Docker</h3>
+		<h3>Configured by Ansible</h3>
+		<h3>Hostname - ubuntu1</h3>
+		<h3>OS -Debian - Ubuntu v16.04</h3>
+		<h3>IP Address - 172.17.0.2</h3>
+	</body>
+</html>
+
+jegan@tektutor.org $ curl http://localhost:8002
+<html>
+	<head>
+		<title>Welcome to DevOps!</title>
+	</head>
+
+	<body>
+		<h3>Provisioned by Docker</h3>
+		<h3>Configured by Ansible</h3>
+		<h3>Hostname - ubuntu2</h3>
+		<h3>OS -Debian - Ubuntu v16.04</h3>
+		<h3>IP Address - 172.17.0.3</h3>
+	</body>
+</html>
+```
