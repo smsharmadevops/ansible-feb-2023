@@ -61,7 +61,7 @@
     shell:  service nginx restart
 
   - name: Stop the nginx web server in CentOS if it is running already
-    when: ansible_distribution == "CentOS" and output.failed == false
+    when: ansible_distribution == "CentOS" and output.rc == 0 
     shell: /usr/sbin/nginx -s stop
 
   - name: Start the nginx web server in CentOS
