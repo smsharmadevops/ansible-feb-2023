@@ -1,6 +1,6 @@
 # Day2
 
-## Installing nginx web server in ubuntu ansible nodes via an Ansible Playbook
+## ⛹️‍♀️ Lab - Installing nginx web server in ubuntu ansible nodes via an Ansible Playbook
 ```
 cd ~/ansible-feb-2023
 git pull
