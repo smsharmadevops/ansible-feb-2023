@@ -12,5 +12,3 @@ ansible_private_key_file=~/.ssh/id_rsa
 [dev]
 ubuntu[1:2]
 
-[qa]
-centos[1:2]
