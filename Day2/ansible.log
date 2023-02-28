@@ -55,3 +55,76 @@
 2023-02-28 11:02:31,834 p=22926 u=jegan n=ansible | PLAY RECAP *****************************************************************************************************************************
 2023-02-28 11:02:31,834 p=22926 u=jegan n=ansible | ubuntu1                    : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 2023-02-28 11:02:31,834 p=22926 u=jegan n=ansible | ubuntu2                    : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-02-28 11:38:17,788 p=26687 u=jegan n=ansible | PLAY [This playbook will install,configure nginx web server and will deploy a custom web page into custom web root folder] *************
+2023-02-28 11:38:17,797 p=26687 u=jegan n=ansible | TASK [Gathering Facts] *****************************************************************************************************************
+2023-02-28 11:38:18,889 p=26687 u=jegan n=ansible | ok: [ubuntu1]
+2023-02-28 11:38:18,903 p=26687 u=jegan n=ansible | ok: [ubuntu2]
+2023-02-28 11:38:18,923 p=26687 u=jegan n=ansible | TASK [Install nginx Web Server in Ubuntu] **********************************************************************************************
+2023-02-28 11:38:26,098 p=26687 u=jegan n=ansible | ok: [ubuntu1]
+2023-02-28 11:38:26,233 p=26687 u=jegan n=ansible | ok: [ubuntu2]
+2023-02-28 11:38:26,248 p=26687 u=jegan n=ansible | TASK [Configure nginx web server to pick the web page from our custom folder] **********************************************************
+2023-02-28 11:38:27,009 p=26687 u=jegan n=ansible | changed: [ubuntu1]
+2023-02-28 11:38:27,010 p=26687 u=jegan n=ansible | changed: [ubuntu2]
+2023-02-28 11:38:27,019 p=26687 u=jegan n=ansible | TASK [Restart the nginx web server in Ubuntu] ******************************************************************************************
+2023-02-28 11:38:28,479 p=26687 u=jegan n=ansible | changed: [ubuntu1]
+2023-02-28 11:38:28,491 p=26687 u=jegan n=ansible | changed: [ubuntu2]
+2023-02-28 11:38:28,524 p=26687 u=jegan n=ansible | PLAY RECAP *****************************************************************************************************************************
+2023-02-28 11:38:28,525 p=26687 u=jegan n=ansible | ubuntu1                    : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-02-28 11:38:28,525 p=26687 u=jegan n=ansible | ubuntu2                    : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-02-28 11:40:14,474 p=27991 u=jegan n=ansible | PLAY [This playbook will install,configure nginx web server and will deploy a custom web page into custom web root folder] *************
+2023-02-28 11:40:14,482 p=27991 u=jegan n=ansible | TASK [Gathering Facts] *****************************************************************************************************************
+2023-02-28 11:40:15,577 p=27991 u=jegan n=ansible | ok: [ubuntu2]
+2023-02-28 11:40:15,598 p=27991 u=jegan n=ansible | ok: [ubuntu1]
+2023-02-28 11:40:15,620 p=27991 u=jegan n=ansible | TASK [Install nginx Web Server in Ubuntu] **********************************************************************************************
+2023-02-28 11:40:23,332 p=27991 u=jegan n=ansible | ok: [ubuntu1]
+2023-02-28 11:40:24,388 p=27991 u=jegan n=ansible | ok: [ubuntu2]
+2023-02-28 11:40:24,399 p=27991 u=jegan n=ansible | TASK [Create the custom web root folder] ***********************************************************************************************
+2023-02-28 11:40:24,792 p=27991 u=jegan n=ansible | changed: [ubuntu2]
+2023-02-28 11:40:24,806 p=27991 u=jegan n=ansible | changed: [ubuntu1]
+2023-02-28 11:40:24,811 p=27991 u=jegan n=ansible | TASK [Configure nginx web server to pick the web page from our custom folder] **********************************************************
+2023-02-28 11:40:25,421 p=27991 u=jegan n=ansible | ok: [ubuntu1]
+2023-02-28 11:40:25,426 p=27991 u=jegan n=ansible | ok: [ubuntu2]
+2023-02-28 11:40:25,432 p=27991 u=jegan n=ansible | TASK [Restart the nginx web server in Ubuntu] ******************************************************************************************
+2023-02-28 11:40:26,890 p=27991 u=jegan n=ansible | changed: [ubuntu1]
+2023-02-28 11:40:26,896 p=27991 u=jegan n=ansible | changed: [ubuntu2]
+2023-02-28 11:40:26,927 p=27991 u=jegan n=ansible | PLAY RECAP *****************************************************************************************************************************
+2023-02-28 11:40:26,927 p=27991 u=jegan n=ansible | ubuntu1                    : ok=5    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-02-28 11:40:26,927 p=27991 u=jegan n=ansible | ubuntu2                    : ok=5    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-02-28 11:42:20,205 p=29334 u=jegan n=ansible | PLAY [This playbook will install,configure nginx web server and will deploy a custom web page into custom web root folder] *************
+2023-02-28 11:42:20,212 p=29334 u=jegan n=ansible | TASK [Gathering Facts] *****************************************************************************************************************
+2023-02-28 11:42:21,290 p=29334 u=jegan n=ansible | ok: [ubuntu2]
+2023-02-28 11:42:21,299 p=29334 u=jegan n=ansible | ok: [ubuntu1]
+2023-02-28 11:42:21,322 p=29334 u=jegan n=ansible | TASK [Install nginx Web Server in Ubuntu] **********************************************************************************************
+2023-02-28 11:42:25,551 p=29334 u=jegan n=ansible | ok: [ubuntu1]
+2023-02-28 11:42:25,607 p=29334 u=jegan n=ansible | ok: [ubuntu2]
+2023-02-28 11:42:25,615 p=29334 u=jegan n=ansible | TASK [Create the custom web root folder] ***********************************************************************************************
+2023-02-28 11:42:26,022 p=29334 u=jegan n=ansible | ok: [ubuntu2]
+2023-02-28 11:42:26,023 p=29334 u=jegan n=ansible | ok: [ubuntu1]
+2023-02-28 11:42:26,030 p=29334 u=jegan n=ansible | TASK [Deploy custom web page into nginx web server] ************************************************************************************
+2023-02-28 11:42:26,728 p=29334 u=jegan n=ansible | fatal: [ubuntu1]: FAILED! => {"changed": false, "checksum": "a632afaf814ad0984748e98f8cf3c490d6aa9d54", "msg": "Destination directory /va/html does not exist"}
+2023-02-28 11:42:26,735 p=29334 u=jegan n=ansible | fatal: [ubuntu2]: FAILED! => {"changed": false, "checksum": "a632afaf814ad0984748e98f8cf3c490d6aa9d54", "msg": "Destination directory /va/html does not exist"}
+2023-02-28 11:42:26,736 p=29334 u=jegan n=ansible | PLAY RECAP *****************************************************************************************************************************
+2023-02-28 11:42:26,736 p=29334 u=jegan n=ansible | ubuntu1                    : ok=3    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2023-02-28 11:42:26,736 p=29334 u=jegan n=ansible | ubuntu2                    : ok=3    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2023-02-28 11:42:42,378 p=30160 u=jegan n=ansible | PLAY [This playbook will install,configure nginx web server and will deploy a custom web page into custom web root folder] *************
+2023-02-28 11:42:42,386 p=30160 u=jegan n=ansible | TASK [Gathering Facts] *****************************************************************************************************************
+2023-02-28 11:42:43,347 p=30160 u=jegan n=ansible | ok: [ubuntu1]
+2023-02-28 11:42:43,349 p=30160 u=jegan n=ansible | ok: [ubuntu2]
+2023-02-28 11:42:43,369 p=30160 u=jegan n=ansible | TASK [Install nginx Web Server in Ubuntu] **********************************************************************************************
+2023-02-28 11:42:51,005 p=30160 u=jegan n=ansible | ok: [ubuntu2]
+2023-02-28 11:42:53,307 p=30160 u=jegan n=ansible | ok: [ubuntu1]
+2023-02-28 11:42:53,317 p=30160 u=jegan n=ansible | TASK [Create the custom web root folder] ***********************************************************************************************
+2023-02-28 11:42:53,711 p=30160 u=jegan n=ansible | ok: [ubuntu2]
+2023-02-28 11:42:53,724 p=30160 u=jegan n=ansible | ok: [ubuntu1]
+2023-02-28 11:42:53,729 p=30160 u=jegan n=ansible | TASK [Deploy custom web page into nginx web server] ************************************************************************************
+2023-02-28 11:42:54,475 p=30160 u=jegan n=ansible | changed: [ubuntu2]
+2023-02-28 11:42:54,480 p=30160 u=jegan n=ansible | changed: [ubuntu1]
+2023-02-28 11:42:54,485 p=30160 u=jegan n=ansible | TASK [Configure nginx web server to pick the web page from our custom folder] **********************************************************
+2023-02-28 11:42:54,950 p=30160 u=jegan n=ansible | ok: [ubuntu1]
+2023-02-28 11:42:54,953 p=30160 u=jegan n=ansible | ok: [ubuntu2]
+2023-02-28 11:42:54,960 p=30160 u=jegan n=ansible | TASK [Restart the nginx web server in Ubuntu] ******************************************************************************************
+2023-02-28 11:42:56,402 p=30160 u=jegan n=ansible | changed: [ubuntu2]
+2023-02-28 11:42:56,408 p=30160 u=jegan n=ansible | changed: [ubuntu1]
+2023-02-28 11:42:56,441 p=30160 u=jegan n=ansible | PLAY RECAP *****************************************************************************************************************************
+2023-02-28 11:42:56,441 p=30160 u=jegan n=ansible | ubuntu1                    : ok=6    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-02-28 11:42:56,441 p=30160 u=jegan n=ansible | ubuntu2                    : ok=6    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
