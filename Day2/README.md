@@ -27,3 +27,28 @@ PLAY RECAP *********************************************************************
 ubuntu1                    : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ubuntu2                    : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0  
 </pre>
+
+## ⛹️‍♀️ Lab - Limiting the playbook execution to specific machine(s)
+```
+cd ~/ansible-feb-2023
+git pull
+
+cd Day2
+ansible-playbook install-nginx-playbook.yml --limit=ubuntu1
+```
+
+Expected output
+<pre>
+jegan@tektutor.org $ <b>ansible-playbook install-nginx-playbook.yml --limit=ubuntu1</b>
+
+PLAY [This playbook will install,configure nginx web server and will deploy a custom web page into custom web root folder] *************
+
+TASK [Gathering Facts] *****************************************************************************************************************
+ok: [ubuntu1]
+
+TASK [Install nginx Web Server in Ubuntu] **********************************************************************************************
+ok: [ubuntu1]
+
+PLAY RECAP *****************************************************************************************************************************
+ubuntu1                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+</pre>
