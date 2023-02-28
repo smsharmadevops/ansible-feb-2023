@@ -35,6 +35,7 @@ server {
 
         #Original path from where nginx web server will pick and serve the html web pages
 	#root /var/www/html;
+	#
 	#Modified by TekTutor
 	root /var/html;
 
