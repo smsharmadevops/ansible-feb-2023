@@ -1,0 +1,14 @@
+2023-02-28 10:39:38,623 p=18958 u=jegan n=ansible | PLAY [This playbook will install,configure nginx web server and will deploy a custom web page into custom web root folder] *************
+2023-02-28 10:39:38,631 p=18958 u=jegan n=ansible | TASK [Gathering Facts] *****************************************************************************************************************
+2023-02-28 10:39:39,728 p=18958 u=jegan n=ansible | ok: [ubuntu1]
+2023-02-28 10:39:39,740 p=18958 u=jegan n=ansible | TASK [Install nginx Web Server in Ubuntu] **********************************************************************************************
+2023-02-28 10:39:47,218 p=18958 u=jegan n=ansible | ok: [ubuntu1]
+2023-02-28 10:39:47,236 p=18958 u=jegan n=ansible | PLAY RECAP *****************************************************************************************************************************
+2023-02-28 10:39:47,236 p=18958 u=jegan n=ansible | ubuntu1                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-02-28 10:40:11,257 p=19396 u=jegan n=ansible | PLAY [This playbook will install,configure nginx web server and will deploy a custom web page into custom web root folder] *************
+2023-02-28 10:40:11,265 p=19396 u=jegan n=ansible | TASK [Gathering Facts] *****************************************************************************************************************
+2023-02-28 10:40:12,350 p=19396 u=jegan n=ansible | ok: [ubuntu2]
+2023-02-28 10:40:12,364 p=19396 u=jegan n=ansible | TASK [Install nginx Web Server in Ubuntu] **********************************************************************************************
+2023-02-28 10:40:16,650 p=19396 u=jegan n=ansible | ok: [ubuntu2]
+2023-02-28 10:40:16,670 p=19396 u=jegan n=ansible | PLAY RECAP *****************************************************************************************************************************
+2023-02-28 10:40:16,670 p=19396 u=jegan n=ansible | ubuntu2                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
