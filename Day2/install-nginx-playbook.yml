@@ -3,3 +3,13 @@
   tasks:
   - name: Install nginx Web Server in Ubuntu  
     apt: name=nginx state=latest  update_cache=yes
+
+#  Service module is the recommended module to manage service in Linux distributions, however due to known bug related to docker containers, this won't be able to start, restart the services, hence we need to use the shell/command modules to get this done
+#  - name: Start the nginx web server in Ubuntu 
+#    service: name=nginx state=started
+#
+  
+  # It is not idempotent as it will attempt to start the service everytime we run the playbook, shell module isn't smart enough
+  # to verify the current state of nginx service and act     
+  - name: Start the nginx web server in Ubuntu
+    shell:  service nginx start
