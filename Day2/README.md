@@ -189,3 +189,71 @@ ok: [ubuntu1] => {
 PLAY RECAP *********************************************************************
 ubuntu1                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 </pre>
+
+## Enabling ansible logs
+We need to configure the ansible.cfg file to enable the ansible log as it is disabled by default.
+```
+cd ~/ansible-feb-2023
+git pull
+
+cd Day2
+cat ansible.cfg
+
+ansible-playbook install-nginx-playbook --limit=ubuntu1
+ansible-playbook install-nginx-playbook --limit=ubuntu2
+cat ansible.log
+```
+
+Expected output
+<pre>
+jegan@tektutor.org $ cat ansible.cfg 
+[defaults]
+inventory=./inventory
+log_path=./ansible.log
+
+jegan@tektutor.org $ <b>ansible-playbook install-nginx-playbook.yml --limit=ubuntu1</b>
+
+PLAY [This playbook will install,configure nginx web server and will deploy a custom web page into custom web root folder] *************
+
+TASK [Gathering Facts] *****************************************************************************************************************
+ok: [ubuntu1]
+
+TASK [Install nginx Web Server in Ubuntu] **********************************************************************************************
+ok: [ubuntu1]
+
+PLAY RECAP *****************************************************************************************************************************
+ubuntu1                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+jegan@tektutor.org $ <b>ls</b>
+ansible.cfg  <b>ansible.log</b>  build.yml  install-nginx-playbook.yml  inventory  README.md
+
+jegan@tektutor.org $ <b>ansible-playbook install-nginx-playbook.yml --limit=ubuntu2</b>
+
+PLAY [This playbook will install,configure nginx web server and will deploy a custom web page into custom web root folder] *************
+
+TASK [Gathering Facts] *****************************************************************************************************************
+ok: [ubuntu2]
+
+TASK [Install nginx Web Server in Ubuntu] **********************************************************************************************
+ok: [ubuntu2]
+
+PLAY RECAP *****************************************************************************************************************************
+ubuntu2                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+jegan@tektutor.org $ <b>cat ansible.log</b>
+2023-02-28 10:39:38,623 p=18958 u=jegan n=ansible | PLAY [This playbook will install,configure nginx web server and will deploy a custom web page into custom web root folder] *************
+2023-02-28 10:39:38,631 p=18958 u=jegan n=ansible | TASK [Gathering Facts] *****************************************************************************************************************
+2023-02-28 10:39:39,728 p=18958 u=jegan n=ansible | ok: [ubuntu1]
+2023-02-28 10:39:39,740 p=18958 u=jegan n=ansible | TASK [Install nginx Web Server in Ubuntu] **********************************************************************************************
+2023-02-28 10:39:47,218 p=18958 u=jegan n=ansible | ok: [ubuntu1]
+2023-02-28 10:39:47,236 p=18958 u=jegan n=ansible | PLAY RECAP *****************************************************************************************************************************
+2023-02-28 10:39:47,236 p=18958 u=jegan n=ansible | ubuntu1                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-02-28 10:40:11,257 p=19396 u=jegan n=ansible | PLAY [This playbook will install,configure nginx web server and will deploy a custom web page into custom web root folder] *************
+2023-02-28 10:40:11,265 p=19396 u=jegan n=ansible | TASK [Gathering Facts] *****************************************************************************************************************
+2023-02-28 10:40:12,350 p=19396 u=jegan n=ansible | ok: [ubuntu2]
+2023-02-28 10:40:12,364 p=19396 u=jegan n=ansible | TASK [Install nginx Web Server in Ubuntu] **********************************************************************************************
+2023-02-28 10:40:16,650 p=19396 u=jegan n=ansible | ok: [ubuntu2]
+2023-02-28 10:40:16,670 p=19396 u=jegan n=ansible | PLAY RECAP *****************************************************************************************************************************
+2023-02-28 10:40:16,670 p=19396 u=jegan n=ansible | ubuntu2                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+</pre>
