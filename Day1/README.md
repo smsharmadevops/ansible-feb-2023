@@ -69,8 +69,10 @@
 - Processors
   Intel
   - Virtualization feature is called VT-X
+  
   AMD
   - Virtualization feature is called AMD-V
+  
 - The OS on which the Virtualization software is installed is called Host OS
 - The OS installed within the Virtual Machine is called Guest OS
 - There are 2 types 
