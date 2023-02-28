@@ -1,0 +1,69 @@
+- name: This playbook will install,configure nginx web server and will deploy a custom web page into custom web root folder
+  hosts: all 
+
+  vars:
+  - greeting_msg: Welcome to DevOps!
+  - provisioner_tool: Docker
+  - conf_mgr_tool: Ansible
+    
+  tasks:
+  - name: Install nginx Web Server in Ubuntu  
+    when: ansible_distribution == "Ubuntu"
+    apt: name=nginx state=latest  update_cache=yes
+
+  - name: Install Extra Packages for Enterprise Linux(EPEL) CentOS 
+    when: ansible_distribution == "CentOS"
+    yum: name=epel-release state=latest 
+
+  - name: Install nginx Web Server in CentOS 
+    when: ansible_distribution == "CentOS"
+    yum: name=nginx state=latest 
+
+  - name: Retrieve the IP address
+    shell: hostname -i
+    register: ip_addr
+
+  - debug: var=ip_addr
+
+#  Service module is the recommended module to manage service in Linux distributions, however due to known bug related to docker containers, this won't be able to start, restart the services, hence we need to use the shell/command modules to get this done
+#  - name: Start the nginx web server in Ubuntu 
+#    service: name=nginx state=started
+#
+  - name: Create the custom web root folder
+    file: path=/var/html state=directory mode=0755
+
+  - name: Deploy custom web page into nginx web server
+    template: src=index.html.j2 dest=/var/html/index.html
+
+  - name: Configure nginx web server to pick the web page from our custom folder in Ubuntu
+    when: ansible_distribution == "Ubuntu"
+    copy: src=default dest=/etc/nginx/sites-available/default
+    register: configured
+
+  - name: Configure nginx web server to pick the web page from our custom folder in CentOS
+    when: ansible_distribution == "CentOS"
+    copy: src=nginx.conf dest=/etc/nginx/nginx.conf
+    register: configured
+
+  - debug: var=configured
+
+  - name: Check if nginx is already running
+    shell: curl localhost
+    register: output
+    ignore_errors: yes
+
+  - debug: var=output
+
+  # It is not idempotent as it will attempt to start the service everytime we run the playbook, shell module isn't smart enough
+  # to verify the current state of nginx service and act     
+  - name: Restart the nginx web server in Ubuntu
+    when: ansible_distribution == "Ubuntu" and (output.failed == true or configured.changed == true) 
+    shell:  service nginx restart
+
+  - name: Stop the nginx web server in CentOS if it is running already
+    when: ansible_distribution == "CentOS" and output.rc == 0 
+    shell: /usr/sbin/nginx -s stop
+
+  - name: Start the nginx web server in CentOS
+    when: ansible_distribution == "CentOS" 
+    shell: /usr/sbin/nginx

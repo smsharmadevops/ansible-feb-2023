@@ -1,0 +1,2 @@
+- name: Install nginx Web Server in Ubuntu  
+  apt: name=nginx state=latest  update_cache=yes

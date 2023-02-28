@@ -1,0 +1,20 @@
+2023-02-28 17:34:31,745 p=92389 u=jegan n=ansible | ERROR! Error when evaluating variable in import path: install-nginx-{{ansible_distribution|lower}}.yml.
+
+When using static imports, ensure that any variables used in their names are defined in vars/vars_files
+or extra-vars passed in from the command line. Static imports cannot use variables from facts or inventory
+sources like group or host vars.
+2023-02-28 17:36:28,726 p=92573 u=jegan n=ansible | [DEPRECATION WARNING]: "include" is deprecated, use include_tasks/import_tasks instead. See https://docs.ansible.com/ansible-
+core/2.14/user_guide/playbooks_reuse_includes.html for details. This feature will be removed in version 2.16. Deprecation warnings can be disabled by setting
+ deprecation_warnings=False in ansible.cfg.
+2023-02-28 17:36:28,788 p=92573 u=jegan n=ansible | PLAY [This playbook will install,configure nginx web server and will deploy a custom web page into custom web root folder] ***********************************
+2023-02-28 17:36:28,797 p=92573 u=jegan n=ansible | TASK [Gathering Facts] ***************************************************************************************************************************************
+2023-02-28 17:36:29,897 p=92573 u=jegan n=ansible | ok: [ubuntu1]
+2023-02-28 17:36:29,901 p=92573 u=jegan n=ansible | ok: [ubuntu2]
+2023-02-28 17:36:57,715 p=92573 u=jegan n=ansible |  [ERROR]: User interrupted execution
+
+2023-02-28 17:37:19,351 p=93019 u=jegan n=ansible | PLAY [This playbook will install,configure nginx web server and will deploy a custom web page into custom web root folder] ***********************************
+2023-02-28 17:37:19,376 p=93019 u=jegan n=ansible | TASK [Gathering Facts] ***************************************************************************************************************************************
+2023-02-28 17:37:20,329 p=93019 u=jegan n=ansible | ok: [ubuntu2]
+2023-02-28 17:37:20,332 p=93019 u=jegan n=ansible | ok: [ubuntu1]
+2023-02-28 17:37:22,802 p=93019 u=jegan n=ansible |  [ERROR]: User interrupted execution
+

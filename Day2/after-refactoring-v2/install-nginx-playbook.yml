@@ -1,0 +1,11 @@
+- name: This playbook will install,configure nginx web server and will deploy a custom web page into custom web root folder
+  hosts: all 
+
+  vars_files:
+  - nginx_vars.yml
+    
+  tasks:
+  - include_tasks: "install-nginx-{{ansible_distribution|lower}}.yml"
+  - include_tasks: common-tasks.yml
+  - include_tasks: "configure-nginx-{{ansible_distribution|lower}}.yml"
+  - include_tasks: "restart-nginx-{{ansible_distribution|lower}}.yml"    
