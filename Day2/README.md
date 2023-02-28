@@ -437,3 +437,6 @@ docker run -d --name ubuntu2 --hostname ubuntu2 -p 2002:22 -p 8002:22 tektutor/u
 docker run -d --name centos1 --hostname centos1 -p 2003:22 -p 8003:22 tektutor/centos-ansible-node:latest
 docker run -d --name centos2 --hostname centos2 -p 2004:22 -p 8004:22 tektutor/centos-ansible-node:latest
 ```
+
+Ubuntu tomcat installer package is apache2
+CentOS tomcat installer package is httpd
