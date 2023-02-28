@@ -425,7 +425,7 @@ jegan@tektutor.org $ curl http://localhost:8002
 </html>
 ```
 
-## 🏁 Assignment - Write a Playbook that installs apache tomcat webserver, configure the web root folder and deploy custom web page on Ubuntu and CentOS
+## 🏁 Assignment - Write a Playbook that installs apache tomcat webserver, configure tomcat to use /var/html as web root folder and deploy the custom web page on Ubuntu and CentOS using template module.
 
 Note
 1. Delete the existing containers and recreate new containers
