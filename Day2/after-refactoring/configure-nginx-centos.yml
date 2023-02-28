@@ -1,0 +1,4 @@
+- name: Configure nginx web server to pick the web page from our custom folder in CentOS
+  when: ansible_distribution == "CentOS"
+  copy: src=nginx.conf dest=/etc/nginx/nginx.conf
+  register: configured

@@ -1,0 +1,12 @@
+  - name: Check if nginx is already running
+    shell: curl localhost
+    register: output
+    ignore_errors: yes
+
+  - name: Stop the nginx web server in CentOS if it is running already
+    when: ansible_distribution == "CentOS" and output.rc == 0 
+    shell: /usr/sbin/nginx -s stop
+
+  - name: Start the nginx web server in CentOS
+    when: ansible_distribution == "CentOS" 
+    shell: /usr/sbin/nginx

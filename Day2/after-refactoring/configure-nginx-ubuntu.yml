@@ -1,0 +1,4 @@
+- name: Configure nginx web server to pick the web page from our custom folder in Ubuntu
+  when: ansible_distribution == "Ubuntu"
+  copy: src=default dest=/etc/nginx/sites-available/default
+  register: configured
