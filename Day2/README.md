@@ -424,3 +424,19 @@ jegan@tektutor.org $ curl http://localhost:8002
 	</body>
 </html>
 ```
+
+## 🏁 Assignment - Write a Playbook that installs apache tomcat webserver, configure tomcat to use /var/html as web root folder and deploy the custom web page on Ubuntu and CentOS using template module.
+
+Note
+1. Delete the existing containers and recreate new containers
+docker rm -f $(docker ps -aq)
+2. Recreate new containers
+```
+docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:22 tektutor/ubuntu-ansible-node:latest
+docker run -d --name ubuntu2 --hostname ubuntu2 -p 2002:22 -p 8002:22 tektutor/ubuntu-ansible-node:latest
+docker run -d --name centos1 --hostname centos1 -p 2003:22 -p 8003:22 tektutor/centos-ansible-node:latest
+docker run -d --name centos2 --hostname centos2 -p 2004:22 -p 8004:22 tektutor/centos-ansible-node:latest
+```
+
+Ubuntu tomcat installer package is apache2
+CentOS tomcat installer package is httpd
