@@ -440,3 +440,17 @@ docker run -d --name centos2 --hostname centos2 -p 2004:22 -p 8004:22 tektutor/c
 
 Ubuntu tomcat installer package is apache2
 CentOS tomcat installer package is httpd
+
+## Lab - Executing the refactored ansible playbook version 2
+```
+cd ~/ansible-feb-2023
+git pull
+
+cd Day2/after-refactoring-v2
+ansible-playbook install-nginx-playbook.yml
+```
+
+Expected output
+
+![Refactored Playbook v2](refactored-playbook-1.png)
+![Refactored Playbook v2](refactored-playbook-2.png)
