@@ -190,7 +190,7 @@ PLAY RECAP *********************************************************************
 ubuntu1                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 </pre>
 
-## Enabling ansible logs
+## ⛹️‍♀️ Lab - Enabling ansible logs
 We need to configure the ansible.cfg file to enable the ansible log as it is disabled by default.
 ```
 cd ~/ansible-feb-2023
