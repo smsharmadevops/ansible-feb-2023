@@ -1,0 +1,7 @@
+- name: This playbook demonstrates use of debug module to print variables and/or messages
+  hosts: dev 
+  tasks:
+    - name: Print the variable directly
+      debug: var=ansible_distribution verbosity=4
+
+    - debug: msg="Hostname - {{ansible_hostname}} - {{ansible_distribution}} v{{ansible_distribution_version}}" verbosity=4

@@ -1,0 +1,5 @@
+- name: This playbook will install,configure nginx web server and will deploy a custom web page into custom web root folder
+  hosts: dev 
+  tasks:
+  - name: Install nginx Web Server in Ubuntu  
+    apt: name=nginx state=latest  update_cache=yes
