@@ -347,3 +347,56 @@ Commercial support is available at
 </body>
 </html>
 ```
+
+## ⛹️‍♀️ Lab -Installing nginx and starting the nginx web server in Ubuntu ansible nodes
+
+```
+cd ~/ansible-feb-2023
+git pull
+
+cd Day2
+ansible-playbook install-nginx-playbook.yml
+curl http://localhost:8001
+curl http://localhost:8002
+```
+
+Expected output
+<pre>
+ jegan@tektutor.org $ <b>ansible-playbook install-nginx-playbook.yml</b>
+
+PLAY [This playbook will install,configure nginx web server and will deploy a custom web page into custom web root folder] *************
+
+TASK [Gathering Facts] *****************************************************************************************************************
+ok: [ubuntu1]
+ok: [ubuntu2]
+
+TASK [Install nginx Web Server in Ubuntu] **********************************************************************************************
+ok: [ubuntu2]
+ok: [ubuntu1]
+
+TASK [Create the custom web root folder] ***********************************************************************************************
+ok: [ubuntu2]
+ok: [ubuntu1]
+
+TASK [Deploy custom web page into nginx web server] ************************************************************************************
+changed: [ubuntu2]
+changed: [ubuntu1]
+
+TASK [Configure nginx web server to pick the web page from our custom folder] **********************************************************
+ok: [ubuntu1]
+ok: [ubuntu2]
+
+TASK [Restart the nginx web server in Ubuntu] ******************************************************************************************
+changed: [ubuntu2]
+changed: [ubuntu1]
+
+PLAY RECAP *****************************************************************************************************************************
+ubuntu1                    : ok=6    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ubuntu2                    : ok=6    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+jegan@tektutor.org $ <b>curl http://localhost:8001</b>
+<h1>Nginx is working!</h1>
+
+jegan@tektutor.org $ <b>curl http://localhost:8002</b>
+<h1>Nginx is working!</h1>
+</pre>
