@@ -350,7 +350,7 @@ Error: No public port '22' published for ad067b4af36b
 }
 
 jegan@tektutor.org $ <b>ansible all -m ping</b>
- [ERROR]: Error: No public port '22' published for ad067b4af36b
+[ERROR]: Error: No public port '22' published for ad067b4af36b
 [WARNING]: Invalid characters were found in group names but not replaced, use -vvvv to see details
 172.17.0.4 | SUCCESS => {
     "ansible_facts": {
