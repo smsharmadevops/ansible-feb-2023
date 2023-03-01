@@ -416,3 +416,176 @@ jegan@tektutor.org $ <b>ansible all -m ping</b>
     "ping": "pong"
 }
 </pre>
+
+## ⛹️ Lab - Cloning TekTutor Training Repo
+```
+cd ~/ansible-feb-2023
+git pull
+
+cd Day3/git
+ansible-playbook clone-git-repo-playbook.yml
+```
+
+Expected output
+<pre>
+jegan@tektutor.org $ <b>ansible-playbook clone-git-repo-playbook.yml</b>
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+PLAY [Demonstrates cloning TekTutor Training Repo] *************************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************************
+ok: [localhost]
+
+TASK [Create a temp directory to clone the repo] ***************************************************************************************
+changed: [localhost]
+
+TASK [Clone the TektTutor Training repo] ***********************************************************************************************
+changed: [localhost]
+
+PLAY RECAP *****************************************************************************************************************************
+localhost                  : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+jegan@tektutor.org $ <b>cd tmp</b>
+jegan@tektutor.org $ <b>ls</b>
+Day1  Day2  Day3  Day4  Day5  README.md
+jegan@tektutor.org $ <b>cd ..</b>
+jegan@tektutor.org $ <b>ls</b>
+clone-git-repo-playbook.yml  tmp
+jegan@tektutor.org $ <b>rm -rf tmp</b>
+jegan@tektutor.org $ <b>ls</b>
+clone-git-repo-playbook.yml
+</pre>
+
+
+## ⛹️ Lab - Playbook with multiple Play
+```
+cd ~/ansible-feb-2023
+git pull
+
+cd Day3/playbook-with-multiple-plays
+ansible-playbook playbook.yml
+```
+
+Expected output
+<pre>
+jegan@tektutor.org $ <b>ansible-playbook playbook.yml</b>
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+PLAY [First play] **********************************************************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************************
+ok: [localhost]
+
+TASK [debug] ***************************************************************************************************************************
+ok: [localhost] => {
+    "msg": "First Play, second task ..."
+}
+
+TASK [debug] ***************************************************************************************************************************
+ok: [localhost] => {
+    "msg": "First Play, third task ..."
+}
+
+PLAY [Second play] *********************************************************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************************
+ok: [localhost]
+
+TASK [debug] ***************************************************************************************************************************
+ok: [localhost] => {
+    "msg": "Second Play, second task ..."
+}
+
+TASK [debug] ***************************************************************************************************************************
+ok: [localhost] => {
+    "msg": "Second Play, third task ..."
+}
+
+PLAY RECAP *****************************************************************************************************************************
+localhost                  : ok=6    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
+</pre>
+
+
+## ⛹️  Lab - Invoking one Playbook from another one
+```
+cd ~/ansible-feb-2023
+git pull
+
+cd Day3/invoking-one-playbook-from-another
+ansible-playbook first-playbook.yml
+```
+
+Expected output
+<pre>
+jegan@tektutor.org $ <b>ansible-playbook first-playbook.yml</b>
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+PLAY [First Playbook] ******************************************************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************************
+ok: [localhost]
+
+TASK [debug] ***************************************************************************************************************************
+ok: [localhost] => {
+    "msg": "First playbook, second task"
+}
+
+TASK [Invoke the second playbook from the first playbook] ******************************************************************************
+changed: [localhost]
+
+TASK [debug] ***************************************************************************************************************************
+ok: [localhost] => {
+    "output": {
+        "changed": true,
+        "cmd": "ansible-playbook ./second-playbook.yml",
+        "delta": "0:00:04.238386",
+        "end": "2023-03-01 17:14:20.656378",
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "start": "2023-03-01 17:14:16.417992",
+        "stderr": "[WARNING]: provided hosts list is empty, only localhost is available. Note that\nthe implicit localhost does not match 'all'",
+        "stderr_lines": [
+            "[WARNING]: provided hosts list is empty, only localhost is available. Note that",
+            "the implicit localhost does not match 'all'"
+        ],
+        "stdout": "\nPLAY [Second Playbook] *********************************************************\n\nTASK [Gathering Facts] *********************************************************\nok: [localhost]\n\nTASK [debug] *******************************************************************\nok: [localhost] => {\n    \"msg\": \"Second playbook, second task\"\n}\n\nPLAY RECAP *********************************************************************\nlocalhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   ",
+        "stdout_lines": [
+            "",
+            "PLAY [Second Playbook] *********************************************************",
+            "",
+            "TASK [Gathering Facts] *********************************************************",
+            "ok: [localhost]",
+            "",
+            "TASK [debug] *******************************************************************",
+            "ok: [localhost] => {",
+            "    \"msg\": \"Second playbook, second task\"",
+            "}",
+            "",
+            "PLAY RECAP *********************************************************************",
+            "localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   "
+        ]
+    }
+}
+
+PLAY RECAP *****************************************************************************************************************************
+localhost                  : ok=4    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
+</pre>
+
+
+## ⛹️ Lab - Dry run playbook
+```
+cd ~/ansible-feb-2023
+git pull
+
+cd Day3/invoking-one-playbook-from-another
+ansible-playbook first-playbook.yml --syntax-check
+```
+
+Expected output
+<pre>
+jegan@tektutor.org $ <b>ansible-playbook first-playbook.yml --syntax-check</b>
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+playbook: first-playbook.yml
+</pre>
