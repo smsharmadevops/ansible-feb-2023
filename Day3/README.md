@@ -213,3 +213,206 @@ ok: [localhost] => {
 PLAY RECAP *****************************************************************************************************************************
 localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 </pre>
+
+## ⛹️ Lab - Using Dynamic Inventory
+```
+cd ~/ansible-feb-2023
+git pull
+
+cd Day3/ansible-docker-dynamic-inventory/
+./dynamic_inventory.py
+
+ansible all -m ping
+```
+
+Expected output
+<pre>
+jegan@tektutor.org $ <b>./dynamic_inventory.py</b>
+Error: No public port '22' published for ad067b4af36b
+{
+    "0dd095f59c19": {
+        "hosts": [
+            "172.17.0.10"
+        ],
+        "vars": {
+            "ansible_become_password": "root",
+            "ansible_become_user": "root",
+            "ansible_host": "localhost",
+            "ansible_port": "3004",
+            "ansible_private_key_file": "/home/jegan/.ssh/id_rsa",
+            "ansible_user": "root"
+        }
+    },
+    "34f638e86b90": {
+        "hosts": [
+            "172.17.0.3"
+        ],
+        "vars": {
+            "ansible_become_password": "root",
+            "ansible_become_user": "root",
+            "ansible_host": "localhost",
+            "ansible_port": "2002",
+            "ansible_private_key_file": "/home/jegan/.ssh/id_rsa",
+            "ansible_user": "root"
+        }
+    },
+    "3701c88f07be": {
+        "hosts": [
+            "172.17.0.8"
+        ],
+        "vars": {
+            "ansible_become_password": "root",
+            "ansible_become_user": "root",
+            "ansible_host": "localhost",
+            "ansible_port": "3002",
+            "ansible_private_key_file": "/home/jegan/.ssh/id_rsa",
+            "ansible_user": "root"
+        }
+    },
+    "465d1f883e79": {
+        "hosts": [
+            "172.17.0.7"
+        ],
+        "vars": {
+            "ansible_become_password": "root",
+            "ansible_become_user": "root",
+            "ansible_host": "localhost",
+            "ansible_port": "3001",
+            "ansible_private_key_file": "/home/jegan/.ssh/id_rsa",
+            "ansible_user": "root"
+        }
+    },
+    "4884753162b3": {
+        "hosts": [
+            "172.17.0.4"
+        ],
+        "vars": {
+            "ansible_become_password": "root",
+            "ansible_become_user": "root",
+            "ansible_host": "localhost",
+            "ansible_port": "2003",
+            "ansible_private_key_file": "/home/jegan/.ssh/id_rsa",
+            "ansible_user": "root"
+        }
+    },
+    "4fa748ee0f32": {
+        "hosts": [
+            "172.17.0.5"
+        ],
+        "vars": {
+            "ansible_become_password": "root",
+            "ansible_become_user": "root",
+            "ansible_host": "localhost",
+            "ansible_port": "2004",
+            "ansible_private_key_file": "/home/jegan/.ssh/id_rsa",
+            "ansible_user": "root"
+        }
+    },
+    "81413110c12f": {
+        "hosts": [
+            "172.17.0.11"
+        ],
+        "vars": {
+            "ansible_become_password": "root",
+            "ansible_become_user": "root",
+            "ansible_host": "localhost",
+            "ansible_port": "3005",
+            "ansible_private_key_file": "/home/jegan/.ssh/id_rsa",
+            "ansible_user": "root"
+        }
+    },
+    "ad067b4af36b": {
+        "hosts": [
+            "172.17.0.2"
+        ],
+        "vars": {
+            "ansible_become_password": "root",
+            "ansible_become_user": "root",
+            "ansible_host": "172.17.0.2",
+            "ansible_port": "22",
+            "ansible_private_key_file": "/home/jegan/.ssh/id_rsa",
+            "ansible_user": "root"
+        }
+    },
+    "fe5dc08fe98a": {
+        "hosts": [
+            "172.17.0.6"
+        ],
+        "vars": {
+            "ansible_become_password": "root",
+            "ansible_become_user": "root",
+            "ansible_host": "localhost",
+            "ansible_port": "2005",
+            "ansible_private_key_file": "/home/jegan/.ssh/id_rsa",
+            "ansible_user": "root"
+        }
+    }
+}
+
+jegan@tektutor.org $ <b>ansible all -m ping</b>
+[ERROR]: Error: No public port '22' published for ad067b4af36b
+[WARNING]: Invalid characters were found in group names but not replaced, use -vvvv to see details
+172.17.0.4 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+172.17.0.3 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+172.17.0.7 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+172.17.0.10 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+172.17.0.8 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+172.17.0.5 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+172.17.0.6 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+172.17.0.2 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+172.17.0.11 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+</pre>
