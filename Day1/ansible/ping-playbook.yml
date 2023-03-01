@@ -1,5 +1,6 @@
 - name: Pings the ansible nodes
   hosts: all
+  gather_facts: no
   tasks:
   - name: Ping the ubuntu ansible node
     ping:
