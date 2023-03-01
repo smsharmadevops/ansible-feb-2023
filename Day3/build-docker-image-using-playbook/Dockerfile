@@ -1,18 +1,10 @@
-FROM centos/systemd
+FROM centos:centos7
 MAINTAINER Jeganathan Swaminathan <jegan@tektutor.org> 
 
-RUN yum install -y which openssh-clients openssh-server python3 sudo epel-release openssl certmonger; systemctl enable sshd.service
-
-RUN mkdir -p /var/run/sshd; chmod -rx /var/run/sshd
-
-RUN echo 'root:root' | chpasswd && usermod -aG wheel root
-
-RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
-
-RUN sed -ri 's/#PermitRootLogin yes/PermitRootLogin yes/g' /etc/ssh/sshd_config
-
-RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
-RUN sed -ri 's/#UsePAM no/UsePAM yes/g' /etc/ssh/sshd_config
+RUN yum install -y which openssh-clients openssh-server python3 
+RUN ssh-keygen -f /etc/ssh/ssh_host_rsa_key
+RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
+RUN sed -i '/pam_loginuid.so/c session    optional     pam_loginuid.so'  /etc/pam.d/sshd
 
 RUN echo 'root:root' | chpasswd
 RUN usermod -aG wheel root 
