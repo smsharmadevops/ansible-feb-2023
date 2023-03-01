@@ -1,0 +1,57 @@
+- name: This playbook will build the ansible node custom docker images
+  hosts: localhost
+  become: yes
+
+  vars:
+  - image_names:
+    - tektutor/ubuntu-ansible-node:latest
+    - tektutor/centos-ansible-node:latest
+
+  tasks:
+  - name: Delete all ansible node containers
+    shell: docker rm -f $(docker ps -aq --filter "name=ubuntu" --filter "name=centos")
+    ignore_errors: yes
+
+  - name: Install pip3 in Ubuntu
+    when: ansible_os_family == "Debian"
+    apt: name=python3-pip state=latest
+
+  - name: Install pip3 in Fedora 
+    when: ansible_os_family == "RedHat"
+    yum: name=python3-pip state=latest
+
+  - name: Install Docker Python SDK
+    shell: pip3 install docker-py
+
+  - name: Delete all ansible node images from local registry
+    docker_image:
+      name: "{{item}}"
+      state: absent
+    with_list: "{{image_names}}"
+
+  - name: Copy the public key into the current directory
+    copy: src=~/.ssh/id_rsa.pub dest=./authorized_keys
+
+  - name: Build Ubuntu ansible node docker image 
+    docker_image:
+      name: tektutor/ubuntu-ansible-node:latest 
+      state: present
+      source: build
+      build:
+        dockerfile : UbuntuDockerfile
+        path: .
+        pull: no
+
+  - name: Build CentOS ansible node docker image 
+    docker_image:
+      name: tektutor/centos-ansible-node:latest 
+      state: present
+      source: build
+      build:
+        dockerfile : CentOSDockerfile
+        path: .
+        pull: no
+
+
+  - name: Delete the authorized_keys from local directory
+    command: rm ./authorized_keys
