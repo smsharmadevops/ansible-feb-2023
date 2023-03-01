@@ -1,0 +1,9 @@
+- name: Demonstrates accessing vault protected sensitive data
+  hosts: localhost
+
+  vars_files:
+  - mysql-login-credentials.yml
+
+  tasks:
+  - name: Read vault protected data
+    debug: msg="username => {{username}} and password => {{password}}"
