@@ -1,0 +1,9 @@
+- name: Demonstrates accessing container info
+  hosts: localhost
+  tasks:
+  - name: Print container info
+    docker_container_info:
+      name: ubuntu-001 
+    register: output
+
+  - debug: var=output

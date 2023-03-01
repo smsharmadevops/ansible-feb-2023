@@ -1,0 +1,11 @@
+- name: First play 
+  hosts: localhost
+  tasks:
+  - debug: msg="First Play, second task ..."
+  - debug: msg="First Play, third task ..."
+
+- name: Second play 
+  hosts: localhost
+  tasks:
+  - debug: msg="Second Play, second task ..."
+  - debug: msg="Second Play, third task ..."

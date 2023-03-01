@@ -1,0 +1,9 @@
+- name: Playbook that prints the git config details
+  hosts: localhost
+  tasks:
+  - name: Print git config
+    git_config:
+      list_all: yes
+    register: output
+
+  - debug: var=output

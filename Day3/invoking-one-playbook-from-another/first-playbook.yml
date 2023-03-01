@@ -1,0 +1,10 @@
+- name: First Playbook
+  hosts: localhost
+  tasks:
+  - debug: msg="First playbook, second task"
+
+  - name: Invoke the second playbook from the first playbook
+    shell: ansible-playbook ./second-playbook.yml
+    register: output
+
+  - debug: var=output
