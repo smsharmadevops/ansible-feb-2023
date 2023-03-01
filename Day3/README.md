@@ -111,3 +111,12 @@ changed: [localhost] => (item=002)
 PLAY RECAP *****************************************************************************************************************************
 localhost                  : ok=6    changed=4    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 </pre>
+
+## Lab - Building Ansible Node Docker images via Playbook
+```
+cd ~/ansible-feb-2023
+git pull
+
+cd Day3/build-docker-image-using-playbook
+ansible-playbook playbook.yml --ask-become-pass
+```
