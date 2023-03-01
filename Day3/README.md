@@ -152,7 +152,7 @@ Expected output
 ![output3](install-nginx-on-provisioned-containers-part-3.png)
 
 
-## Lab - Ansible vault
+## ⛹️ Lab - Ansible vault
 
 When prompts for password, type 'root@123' withou the quotes.
 ```
