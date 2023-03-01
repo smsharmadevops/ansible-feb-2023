@@ -506,7 +506,7 @@ localhost                  : ok=6    changed=0    unreachable=0    failed=0    s
 </pre>
 
 
-## Lab - Invoking one Playbook from another one
+## ⛹️  Lab - Invoking one Playbook from another one
 ```
 cd ~/ansible-feb-2023
 git pull
@@ -570,4 +570,22 @@ ok: [localhost] => {
 
 PLAY RECAP *****************************************************************************************************************************
 localhost                  : ok=4    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
+</pre>
+
+
+## ⛹️ Lab - Dry run playbook
+```
+cd ~/ansible-feb-2023
+git pull
+
+cd Day3/invoking-one-playbook-from-another
+ansible-playbook first-playbook.yml --syntax-check
+```
+
+Expected output
+<pre>
+jegan@tektutor.org $ <b>ansible-playbook first-playbook.yml --syntax-check</b>
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+playbook: first-playbook.yml
 </pre>
