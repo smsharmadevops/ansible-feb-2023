@@ -214,7 +214,7 @@ PLAY RECAP *********************************************************************
 localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 </pre>
 
-## Lab - Using Dynamic Inventory
+## ⛹️ Lab - Using Dynamic Inventory
 ```
 cd ~/ansible-feb-2023
 git pull
