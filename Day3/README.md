@@ -144,5 +144,9 @@ curl http://localhost:8001
 curl http://localhost:8002
 curl http://localhost:9001
 curl http://localhost:9001
-
 ```
+
+Expected output
+![output1](install-nginx-on-provisioned-containers-part-1.png)
+![output2](install-nginx-on-provisioned-containers-part-2.png)
+![output3](install-nginx-on-provisioned-containers-part-3.png)
