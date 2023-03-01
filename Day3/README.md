@@ -123,3 +123,20 @@ ansible-playbook playbook.yml --ask-become-pass
 
 Expected output
 ![Automate Docker Image Build using Playbook](build-image-using-playbook.png)
+
+
+### Provisioning containers 
+```
+cd Day3/loops/sequence
+ansible-playbook playbook.yml --ask-become-pass
+docker ps
+```
+
+### Testing if the newly provisioned containers are reachable to Ansible 
+```
+cd ~/ansible-feb-2003
+git pull
+
+cd Day2/ansible
+ansible-playbook install-nginx-playbook.yml 
+```
