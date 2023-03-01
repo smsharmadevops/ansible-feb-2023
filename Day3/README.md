@@ -150,3 +150,38 @@ Expected output
 ![output1](install-nginx-on-provisioned-containers-part-1.png)
 ![output2](install-nginx-on-provisioned-containers-part-2.png)
 ![output3](install-nginx-on-provisioned-containers-part-3.png)
+
+
+## Lab - Ansible vault
+
+When prompts for password, type 'root@123' withou the quotes.
+```
+cd ~/ansible-feb-2023
+git pull
+
+cd Day3/ansible-vault
+ansible-playbook playbook.yml --ask-vault-pass
+```
+
+Expected output
+<pre>
+jegan@tektutor.org $ <b>ls</b>
+mysql-login-credentials.yml  playbook.yml
+
+jegan@tektutor.org $ <b>ansible-playbook playbook.yml --ask-vault-pass</b>
+Vault password: 
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+PLAY [Demonstrates accessing vault protected sensitive data] ***************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************************
+ok: [localhost]
+
+TASK [Read vault protected data] *******************************************************************************************************
+ok: [localhost] => {
+    "msg": "username => root and password => admin@123"
+}
+
+PLAY RECAP *****************************************************************************************************************************
+localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+</pre>
