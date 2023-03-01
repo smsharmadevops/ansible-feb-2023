@@ -1,6 +1,6 @@
 # Day 3
 
-## Lab - Using List variables in Ansible playbooks
+## ⛹️ Lab - Using List variables in Ansible playbooks
 ```
 cd ~/ansible-feb-2023
 git pull
