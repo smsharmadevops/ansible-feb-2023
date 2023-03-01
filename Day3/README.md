@@ -64,3 +64,50 @@ ok: [localhost] => (item={'key': 'LOG_PATH', 'value': '/tmp/ansible/ansible.log'
 PLAY RECAP *****************************************************************************************************
 localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 </pre>
+
+
+## ⛹️ Lab - Using sequence loop in Ansible playbook and provision docker containers
+
+When it prompts for password, type 'rps@2345' without quotes as the admin password.
+```
+cd ~/ansible-feb-2023
+git pull
+
+cd Day3/loops/sequence
+ansible-playbook playbook.yml --ask-become-pass
+```
+
+
+Expected output
+<pre>
+jegan@tektutor.org $ <b>ansible-playbook playbook.yml --ask-become-pass</b>
+BECOME password: 
+
+PLAY [This playbook will provision ansible node containers] ****************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************************
+ok: [localhost]
+
+TASK [Install Python package installer in Fedora] **************************************************************************************
+ok: [localhost]
+
+TASK [Install Python package installer in Fedora] **************************************************************************************
+skipping: [localhost]
+
+TASK [Install Docker Python SDK which is required for docker_container ansible module] *************************************************
+changed: [localhost]
+
+TASK [Delete existing ubuntu containers] ***********************************************************************************************
+changed: [localhost]
+
+TASK [Provision ubuntu ansible node containers] ****************************************************************************************
+changed: [localhost] => (item=001)
+changed: [localhost] => (item=002)
+
+TASK [Provision centos ansible node containers] ****************************************************************************************
+changed: [localhost] => (item=001)
+changed: [localhost] => (item=002)
+
+PLAY RECAP *****************************************************************************************************************************
+localhost                  : ok=6    changed=4    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+</pre>
