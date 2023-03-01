@@ -139,4 +139,10 @@ git pull
 
 cd Day2/ansible
 ansible-playbook install-nginx-playbook.yml 
+
+curl http://localhost:8001
+curl http://localhost:8002
+curl http://localhost:9001
+curl http://localhost:9001
+
 ```
