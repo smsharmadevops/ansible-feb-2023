@@ -504,3 +504,70 @@ ok: [localhost] => {
 PLAY RECAP *****************************************************************************************************************************
 localhost                  : ok=6    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
 </pre>
+
+
+## Lab - Invoking one Playbook from another one
+```
+cd ~/ansible-feb-2023
+git pull
+
+cd Day3/invoking-one-playbook-from-another
+ansible-playbook first-playbook.yml
+```
+
+Expected output
+<pre>
+jegan@tektutor.org $ <b>ansible-playbook first-playbook.yml</b>
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+PLAY [First Playbook] ******************************************************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************************
+ok: [localhost]
+
+TASK [debug] ***************************************************************************************************************************
+ok: [localhost] => {
+    "msg": "First playbook, second task"
+}
+
+TASK [Invoke the second playbook from the first playbook] ******************************************************************************
+changed: [localhost]
+
+TASK [debug] ***************************************************************************************************************************
+ok: [localhost] => {
+    "output": {
+        "changed": true,
+        "cmd": "ansible-playbook ./second-playbook.yml",
+        "delta": "0:00:04.238386",
+        "end": "2023-03-01 17:14:20.656378",
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "start": "2023-03-01 17:14:16.417992",
+        "stderr": "[WARNING]: provided hosts list is empty, only localhost is available. Note that\nthe implicit localhost does not match 'all'",
+        "stderr_lines": [
+            "[WARNING]: provided hosts list is empty, only localhost is available. Note that",
+            "the implicit localhost does not match 'all'"
+        ],
+        "stdout": "\nPLAY [Second Playbook] *********************************************************\n\nTASK [Gathering Facts] *********************************************************\nok: [localhost]\n\nTASK [debug] *******************************************************************\nok: [localhost] => {\n    \"msg\": \"Second playbook, second task\"\n}\n\nPLAY RECAP *********************************************************************\nlocalhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   ",
+        "stdout_lines": [
+            "",
+            "PLAY [Second Playbook] *********************************************************",
+            "",
+            "TASK [Gathering Facts] *********************************************************",
+            "ok: [localhost]",
+            "",
+            "TASK [debug] *******************************************************************",
+            "ok: [localhost] => {",
+            "    \"msg\": \"Second playbook, second task\"",
+            "}",
+            "",
+            "PLAY RECAP *********************************************************************",
+            "localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   "
+        ]
+    }
+}
+
+PLAY RECAP *****************************************************************************************************************************
+localhost                  : ok=4    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
+</pre>
