@@ -1,3 +1,3 @@
 #!/bin/bash
 IP_ADDRESS=`hostname -i`
-echo "{\"IP4 Address\": \"${IP_ADDRESS}\" }"
+echo "{\"IPV4 Address\": \"${IP_ADDRESS}\" }"

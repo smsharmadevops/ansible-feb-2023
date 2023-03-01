@@ -3,7 +3,7 @@
   gather_facts: no
   tasks:
   - name: Collect facts
-    setup: 
+    setup: filter=ansible_local 
     register: output
 
   - debug: var=output
