@@ -416,3 +416,43 @@ jegan@tektutor.org $ <b>ansible all -m ping</b>
     "ping": "pong"
 }
 </pre>
+
+## ⛹️ Lab - Cloning TekTutor Training Repo
+```
+cd ~/ansible-feb-2023
+git pull
+
+cd Day3/git
+ansible-playbook clone-git-repo-playbook.yml
+```
+
+Expected output
+<pre>
+jegan@tektutor.org $ <b>ansible-playbook clone-git-repo-playbook.yml</b>
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+PLAY [Demonstrates cloning TekTutor Training Repo] *************************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************************
+ok: [localhost]
+
+TASK [Create a temp directory to clone the repo] ***************************************************************************************
+changed: [localhost]
+
+TASK [Clone the TektTutor Training repo] ***********************************************************************************************
+changed: [localhost]
+
+PLAY RECAP *****************************************************************************************************************************
+localhost                  : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+jegan@tektutor.org $ <b>cd tmp</b>
+jegan@tektutor.org $ <b>ls</b>
+Day1  Day2  Day3  Day4  Day5  README.md
+jegan@tektutor.org $ <b>cd ..</b>
+jegan@tektutor.org $ <b>ls</b>
+clone-git-repo-playbook.yml  tmp
+jegan@tektutor.org $ <b>rm -rf tmp</b>
+jegan@tektutor.org $ <b>ls</b>
+clone-git-repo-playbook.yml
+</pre>
+
