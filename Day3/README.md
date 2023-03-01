@@ -456,3 +456,51 @@ jegan@tektutor.org $ <b>ls</b>
 clone-git-repo-playbook.yml
 </pre>
 
+
+## ⛹️ Lab - Playbook with multiple Play
+```
+cd ~/ansible-feb-2023
+git pull
+
+cd Day3/playbook-with-multiple-plays
+ansible-playbook playbook.yml
+```
+
+Expected output
+<pre>
+jegan@tektutor.org $ <b>ansible-playbook playbook.yml</b>
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+PLAY [First play] **********************************************************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************************
+ok: [localhost]
+
+TASK [debug] ***************************************************************************************************************************
+ok: [localhost] => {
+    "msg": "First Play, second task ..."
+}
+
+TASK [debug] ***************************************************************************************************************************
+ok: [localhost] => {
+    "msg": "First Play, third task ..."
+}
+
+PLAY [Second play] *********************************************************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************************
+ok: [localhost]
+
+TASK [debug] ***************************************************************************************************************************
+ok: [localhost] => {
+    "msg": "Second Play, second task ..."
+}
+
+TASK [debug] ***************************************************************************************************************************
+ok: [localhost] => {
+    "msg": "Second Play, third task ..."
+}
+
+PLAY RECAP *****************************************************************************************************************************
+localhost                  : ok=6    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
+</pre>
