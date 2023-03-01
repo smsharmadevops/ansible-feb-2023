@@ -120,3 +120,6 @@ git pull
 cd Day3/build-docker-image-using-playbook
 ansible-playbook playbook.yml --ask-become-pass
 ```
+
+Expected output
+![Automate Docker Image Build using Playbook](build-image-using-playbook.png)
