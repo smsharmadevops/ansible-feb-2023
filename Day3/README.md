@@ -154,7 +154,7 @@ Expected output
 
 ## ⛹️ Lab - Ansible vault
 
-When prompts for password, type 'root@123' withou the quotes.
+When prompts for password, type 'root@123' without the quotes.
 ```
 cd ~/ansible-feb-2023
 git pull
