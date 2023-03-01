@@ -589,3 +589,81 @@ jegan@tektutor.org $ <b>ansible-playbook first-playbook.yml --syntax-check</b>
 
 playbook: first-playbook.yml
 </pre>
+
+
+## ⛹️ Lab - Custom Facts
+```
+cd ~/ansible-feb-2023
+git pull
+
+cd Day3/custom-facts/
+ansible-playbook install-custom-facts-scripts-onto-nodes-playbook.yml
+ansible-playbook print-custom-facts-playbook.yml
+```
+
+Expected output
+<pre>
+jegan@tektutor.org $ <b>ansible-playbook install-custom-facts-scripts-onto-nodes-playbook.yml</b>
+[WARNING]: Invalid characters were found in group names but not replaced, use -vvvv to see details
+
+PLAY [This playbook will copy the custom fact script to all nodes] *********************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************************
+ok: [172.17.0.4]
+ok: [172.17.0.3]
+
+TASK [Create the custom fact directory] ************************************************************************************************
+ok: [172.17.0.3]
+ok: [172.17.0.4]
+
+TASK [Copy the custom fact scripts to the ansible node] ********************************************************************************
+changed: [172.17.0.3]
+changed: [172.17.0.4]
+
+PLAY RECAP *****************************************************************************************************************************
+172.17.0.3                 : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+172.17.0.4                 : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+jegan@tektutor.org $ <b>ansible-playbook print-custom-facts-playbook.yml</b>
+[WARNING]: Invalid characters were found in group names but not replaced, use -vvvv to see details
+
+PLAY [Demonstrates printing custom facts] **********************************************************************************************
+
+TASK [Collect facts] *******************************************************************************************************************
+ok: [172.17.0.3]
+ok: [172.17.0.4]
+
+TASK [debug] ***************************************************************************************************************************
+ok: [172.17.0.3] => {
+    "output": {
+        "ansible_facts": {
+            "ansible_local": {
+                "ipaddress": {
+                    "IPV4 Address": "172.17.0.3"
+                }
+            },
+            "discovered_interpreter_python": "/usr/bin/python3"
+        },
+        "changed": false,
+        "failed": false
+    }
+}
+ok: [172.17.0.4] => {
+    "output": {
+        "ansible_facts": {
+            "ansible_local": {
+                "ipaddress": {
+                    "IPV4 Address": "172.17.0.4"
+                }
+            },
+            "discovered_interpreter_python": "/usr/bin/python3"
+        },
+        "changed": false,
+        "failed": false
+    }
+}
+
+PLAY RECAP *****************************************************************************************************************************
+172.17.0.3                 : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+172.17.0.4                 : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
+</pre>
