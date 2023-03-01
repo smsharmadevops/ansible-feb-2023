@@ -1,0 +1,12 @@
+- name: Demonstrates cloning TekTutor Training Repo
+  hosts: localhost
+  tasks:
+
+  - name: Create a temp directory to clone the repo
+    file: path=./tmp state=directory mode=755
+
+  - name: Clone the TektTutor Training repo
+    git:
+      repo: https://github.com/tektutor/ansible-feb-2023.git
+      version: main
+      dest: ./tmp 
