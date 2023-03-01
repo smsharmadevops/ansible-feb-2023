@@ -5,7 +5,7 @@
 cd ~/ansible-feb-2023
 git pull
 
-cd Day3
+cd Day3/loops/list
 ansible-playbook playbook.yml
 ```
 
