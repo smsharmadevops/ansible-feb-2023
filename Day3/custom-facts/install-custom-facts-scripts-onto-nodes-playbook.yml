@@ -1,0 +1,8 @@
+- name: This playbook will copy the custom fact script to all nodes
+  hosts: all
+  tasks:
+  - name: Create the custom fact directory
+    file: path="/etc/ansible/facts.d" state=directory mode=0755
+
+  - name: Copy the custom fact scripts to the ansible node
+    copy: src=./ipaddress.fact dest=/etc/ansible/facts.d/ipaddress.fact mode=0755

@@ -1,0 +1,9 @@
+- name: Demonstrates printing custom facts
+  hosts: all
+  gather_facts: no
+  tasks:
+  - name: Collect facts
+    setup: 
+    register: output
+
+  - debug: var=output
