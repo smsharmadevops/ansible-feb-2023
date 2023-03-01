@@ -30,7 +30,7 @@
     with_list: "{{image_names}}"
 
   - name: Copy the public key into the current directory
-    copy: src=~/.ssh/id_rsa.pub dest=./authorized_keys
+    copy: src=~/.ssh/id_rsa.pub dest=./authorized_keys mode=0600
 
   - name: Build Ubuntu ansible node docker image 
     docker_image:
