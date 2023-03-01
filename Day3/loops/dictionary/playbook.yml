@@ -1,0 +1,13 @@
+- name: This playbook demonstrates the use of dictionary varibles in Ansible playbook
+  hosts: localhost 
+
+  vars:
+  - software_tools_path:
+      JAVA_HOME: /var/lib/jdk8
+      M2_HOME: /usr/share/maven
+      LOG_PATH: /tmp/ansible/ansible.log
+
+  tasks:
+  - debug: msg="{{item.key}} ==> {{item.value}}" 
+    with_dict: "{{software_tools_path}}"
+
