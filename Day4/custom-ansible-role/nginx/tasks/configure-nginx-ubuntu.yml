@@ -1,0 +1,6 @@
+- name: Configure nginx web server to pick the web page from our custom folder in Ubuntu
+  copy: src=default dest=/etc/nginx/sites-available/default
+  register: configured
+  notify: 
+  - Check if nginx is already running
+  - Restart the nginx web server in Ubuntu
