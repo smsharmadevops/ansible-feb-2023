@@ -157,5 +157,6 @@ kubectl logs -f deployment/awx-operator
 kubectl get pods -l "app.kubernetes.io/managed-by=awx-operator"
 kubectl get svc -l "app.kubernetes.io/managed-by=awx-operator"
 kubectl get svc ansible-awx-service
+nohup minikube tunnel &
 kubectl port-forward svc/ansible-awx-service --address 0.0.0.0 32483:80 &> /dev/null &
 ```
