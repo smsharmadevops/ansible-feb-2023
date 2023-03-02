@@ -153,5 +153,5 @@ spec:
 Run the below command
 ```
 kubectl apply -f awx.yml
-
+kubectl logs -f deployment/awx-operator
 ```
