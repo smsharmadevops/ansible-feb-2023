@@ -1,6 +1,6 @@
 # Day 4
 
-## Lab - Writing a custom Ansible module and invoking it from a playbook
+## ⛹️‍♂️ Lab - Writing a custom Ansible module and invoking it from a playbook
 ```
 cd ~/ansible-feb-2023
 git pull
@@ -44,7 +44,7 @@ PLAY RECAP *********************************************************************
 localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 </pre>
 
-### For Troubleshooting/debug 
+### 🧯 For Troubleshooting/debug 
 
 For debugging Playbook/modules,  you could configure Ansible not to clean up the tmp folder where it copies the module while running then on the remote nodes. You need to do this on your Ansible Controller Machine
 ```
