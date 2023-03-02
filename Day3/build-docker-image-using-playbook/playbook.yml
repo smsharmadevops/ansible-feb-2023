@@ -14,7 +14,7 @@
 
   - name: Install pip3 in Ubuntu
     when: ansible_os_family == "Debian"
-    apt: name=python3-pip state=latest
+    apt: name=python3-pip state=latest update_cache=yes
 
   - name: Install pip3 in Fedora 
     when: ansible_os_family == "RedHat"
@@ -51,7 +51,6 @@
         dockerfile : CentOSDockerfile
         path: .
         pull: no
-
 
   - name: Delete the authorized_keys from local directory
     command: rm ./authorized_keys
