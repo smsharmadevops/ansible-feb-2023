@@ -18,10 +18,7 @@ def main():
         output=sayHello(msg),
     )
 
-    module.exit_json(**result,changed=True)
-
-    #module.fail_json(msg="Some serious error occured")
-
+    module.exit_json(**result)
 
 if __name__ == '__main__':
     main()

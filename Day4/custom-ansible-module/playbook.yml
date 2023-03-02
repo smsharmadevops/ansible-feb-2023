@@ -1,5 +1,5 @@
 - name: Demonstrates invoking our Custom Ansible module
-  hosts: localhost
+  hosts: all 
   tasks:
   - name: Invoke custom hello module
     hello: message="Hello Custom Ansible Module!"
