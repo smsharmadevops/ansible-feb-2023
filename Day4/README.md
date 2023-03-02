@@ -124,7 +124,7 @@ minikube start --addons=ingress --cpus=4 --cni=flannel --install-addons=true --k
 
 minikube status
 
-https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#:~:text=curl%20%2DLO%20%22https%3A//dl.k8s.io/release/%24(curl%20%2DL%20%2Ds%20https%3A//dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl%22
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin
