@@ -107,3 +107,9 @@ Traceback (most recent call last):
                              ^
 SyntaxError: invalid syntax
 </pre>
+
+## Assignment - Develop a custom Ansible Module 
+
+Implement a custom ansible module in a file named add.py. It will accept two float numbers and returns the result as the reponse.
+
+
