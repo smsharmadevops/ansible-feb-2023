@@ -115,8 +115,43 @@ Implement a custom ansible module in a file named add.py. It will accept two flo
 ## Install Ansible Tower opensource
 ```
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+
 sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
 minikube delete
+
 minikube start --addons=ingress --cpus=4 --cni=flannel --install-addons=true --kubernetes-version=stable --memory=8g
+
+minikube status
+
+https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#:~:text=curl%20%2DLO%20%22https%3A//dl.k8s.io/release/%24(curl%20%2DL%20%2Ds%20https%3A//dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl%22
+
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin
+
+kubectl cluster-info
+kubectl get nodes
+
+
+
+kubectl apply -f https://raw.githubusercontent.com/ansible/awx-operator/0.12.0/deploy/awx-operator.yaml
 ```
 
+Create an awx.yml with below content
+```
+---
+apiVersion: awx.ansible.com/v1beta1
+kind: AWX
+metadata:
+  name: ansible-awx
+spec:
+  service_type: nodeport
+  ingress_type: none
+  hostname: ansible-awx.example.com
+```
+
+Run the below command
+```
+kubectl apply -f awx.yml
+
+```
