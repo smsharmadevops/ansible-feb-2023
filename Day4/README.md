@@ -112,4 +112,10 @@ SyntaxError: invalid syntax
 
 Implement a custom ansible module in a file named add.py. It will accept two float numbers and returns the result as the reponse.
 
+## Install Ansible Tower opensource
+```
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+minikube start
+```
 
