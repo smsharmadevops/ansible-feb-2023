@@ -62,7 +62,7 @@ gradle-7.6.1-bin.zip               100%[========================================
 2023-03-03 12:02:38 (23.8 MB/s) - ‘gradle-7.6.1-bin.zip’ saved [122052640/122052640]
 
  jegan@tektutor.org  ~/Downloads $ <b>ls</b>
-'17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us (1).iso'   CentOS-7-x86_64-DVD-2009.iso   jenkins.war
+ '17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us (1).iso'   CentOS-7-x86_64-DVD-2009.iso   jenkins.war
  awx.yml                                                                            gradle-7.6.1-bin.zip
  
  jegan@tektutor.org  ~/Downloads $ <b>unzip gradle-7.6.1-bin.zip</b>
@@ -347,7 +347,6 @@ Groovy:       3.0.13
 Ant:          Apache Ant(TM) version 1.10.11 compiled on July 10 2021
 JVM:          17.0.6 (Private Build 17.0.6+10-Ubuntu-0ubuntu122.04)
 OS:           Linux 5.19.0-35-generic amd64
-
 </pre>
 
 ### Exporting the JDK and Grade path to environment settings
