@@ -442,3 +442,8 @@ Expected output
 
 #### Create user
 ![Create user](jenkins4.png)
+![Create user](jenkins5.png)
+![Create user](jenkins6.png)
+![Create user](jenkins7.png)
+![Create user](jenkins8.png)
+
