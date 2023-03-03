@@ -1,5 +1,212 @@
 # Day 4
 
+## Lab - Running the install nginx playbook with dynamic inventory
+
+```
+cd ~/ansible-feb-2023
+git pull
+
+cd Day4/after-refactoring-v2
+ansible-playbook install-nginx-playbook.yml
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/ansible-feb-2023/Day4/after-refactoring-v2$ <b>ansible-playbook install-nginx-playbook.yml</b>
+[WARNING]: Invalid characters were found in group names but not replaced, use -vvvv to see details
+
+PLAY [This playbook will install,configure nginx web server and will deploy a custom web page into custom web root folder] *****************************
+
+TASK [Gathering Facts] *********************************************************************************************************************************
+ok: [172.17.0.6]
+ok: [172.17.0.5]
+ok: [172.17.0.2]
+ok: [172.17.0.10]
+ok: [172.17.0.7]
+ok: [172.17.0.3]
+ok: [172.17.0.4]
+ok: [172.17.0.8]
+ok: [172.17.0.11]
+ok: [172.17.0.9]
+
+TASK [include_tasks] ***********************************************************************************************************************************
+included: /home/jegan/ansible-feb-2023/Day4/after-refactoring-v2/install-nginx-ubuntu.yml for 172.17.0.6, 172.17.0.5, 172.17.0.2, 172.17.0.3, 172.17.0.4
+included: /home/jegan/ansible-feb-2023/Day4/after-refactoring-v2/install-nginx-centos.yml for 172.17.0.10, 172.17.0.7, 172.17.0.8, 172.17.0.11, 172.17.0.9
+
+TASK [Install nginx Web Server in Ubuntu] **************************************************************************************************************
+changed: [172.17.0.5]
+changed: [172.17.0.3]
+changed: [172.17.0.4]
+changed: [172.17.0.2]
+[WARNING]: Updating cache and auto-installing missing dependency: python3-apt
+changed: [172.17.0.6]
+
+TASK [Install Extra Packages for Enterprise Linux(EPEL) CentOS] ****************************************************************************************
+changed: [172.17.0.11]
+changed: [172.17.0.8]
+changed: [172.17.0.7]
+changed: [172.17.0.10]
+changed: [172.17.0.9]
+
+TASK [Install nginx Web Server in CentOS] **************************************************************************************************************
+changed: [172.17.0.11]
+changed: [172.17.0.9]
+changed: [172.17.0.7]
+changed: [172.17.0.10]
+changed: [172.17.0.8]
+
+TASK [include_tasks] ***********************************************************************************************************************************
+included: /home/jegan/ansible-feb-2023/Day4/after-refactoring-v2/common-tasks.yml for 172.17.0.6, 172.17.0.10, 172.17.0.7, 172.17.0.5, 172.17.0.2, 172.17.0.8, 172.17.0.11, 172.17.0.9, 172.17.0.3, 172.17.0.4
+
+TASK [Retrieve the IP address] *************************************************************************************************************************
+changed: [172.17.0.6]
+changed: [172.17.0.5]
+changed: [172.17.0.2]
+changed: [172.17.0.10]
+changed: [172.17.0.7]
+changed: [172.17.0.3]
+changed: [172.17.0.4]
+changed: [172.17.0.8]
+changed: [172.17.0.11]
+changed: [172.17.0.9]
+
+TASK [Create the custom web root folder] ***************************************************************************************************************
+changed: [172.17.0.6]
+changed: [172.17.0.5]
+changed: [172.17.0.2]
+changed: [172.17.0.10]
+changed: [172.17.0.7]
+changed: [172.17.0.3]
+changed: [172.17.0.4]
+changed: [172.17.0.8]
+changed: [172.17.0.11]
+changed: [172.17.0.9]
+
+TASK [Deploy custom web page into nginx web server] ****************************************************************************************************
+changed: [172.17.0.5]
+changed: [172.17.0.6]
+changed: [172.17.0.2]
+changed: [172.17.0.10]
+changed: [172.17.0.7]
+changed: [172.17.0.3]
+changed: [172.17.0.4]
+changed: [172.17.0.11]
+changed: [172.17.0.9]
+changed: [172.17.0.8]
+
+TASK [include_tasks] ***********************************************************************************************************************************
+included: /home/jegan/ansible-feb-2023/Day4/after-refactoring-v2/configure-nginx-ubuntu.yml for 172.17.0.6, 172.17.0.2, 172.17.0.5, 172.17.0.3, 172.17.0.4
+included: /home/jegan/ansible-feb-2023/Day4/after-refactoring-v2/configure-nginx-centos.yml for 172.17.0.10, 172.17.0.7, 172.17.0.11, 172.17.0.8, 172.17.0.9
+
+TASK [Configure nginx web server to pick the web page from our custom folder in Ubuntu] ****************************************************************
+changed: [172.17.0.5]
+changed: [172.17.0.6]
+changed: [172.17.0.3]
+changed: [172.17.0.2]
+changed: [172.17.0.4]
+
+TASK [Configure nginx web server to pick the web page from our custom folder in CentOS] ****************************************************************
+changed: [172.17.0.10]
+changed: [172.17.0.7]
+changed: [172.17.0.8]
+changed: [172.17.0.9]
+changed: [172.17.0.11]
+
+TASK [include_tasks] ***********************************************************************************************************************************
+included: /home/jegan/ansible-feb-2023/Day4/after-refactoring-v2/restart-nginx-ubuntu.yml for 172.17.0.6, 172.17.0.2, 172.17.0.5, 172.17.0.3, 172.17.0.4
+included: /home/jegan/ansible-feb-2023/Day4/after-refactoring-v2/restart-nginx-centos.yml for 172.17.0.10, 172.17.0.7, 172.17.0.8, 172.17.0.11, 172.17.0.9
+
+TASK [Check if nginx is already running] ***************************************************************************************************************
+[WARNING]: Consider using the get_url or uri module rather than running 'curl'.  If you need to use command because get_url or uri is insufficient you
+can add 'warn: false' to this command task or set 'command_warnings=False' in ansible.cfg to get rid of this message.
+fatal: [172.17.0.6]: FAILED! => {"changed": true, "cmd": "curl localhost", "delta": "0:00:00.019595", "end": "2023-03-03 00:53:56.227471", "msg": "non-zero return code", "rc": 7, "start": "2023-03-03 00:53:56.207876", "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (7) Failed to connect to localhost port 80: Connection refused", "stderr_lines": ["  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current", "                                 Dload  Upload   Total   Spent    Left  Speed", "", "  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (7) Failed to connect to localhost port 80: Connection refused"], "stdout": "", "stdout_lines": []}
+...ignoring
+fatal: [172.17.0.5]: FAILED! => {"changed": true, "cmd": "curl localhost", "delta": "0:00:00.019794", "end": "2023-03-03 00:53:56.234418", "msg": "non-zero return code", "rc": 7, "start": "2023-03-03 00:53:56.214624", "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (7) Failed to connect to localhost port 80: Connection refused", "stderr_lines": ["  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current", "                                 Dload  Upload   Total   Spent    Left  Speed", "", "  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (7) Failed to connect to localhost port 80: Connection refused"], "stdout": "", "stdout_lines": []}
+...ignoring
+fatal: [172.17.0.2]: FAILED! => {"changed": true, "cmd": "curl localhost", "delta": "0:00:00.019263", "end": "2023-03-03 00:53:56.250536", "msg": "non-zero return code", "rc": 7, "start": "2023-03-03 00:53:56.231273", "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (7) Failed to connect to localhost port 80: Connection refused", "stderr_lines": ["  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current", "                                 Dload  Upload   Total   Spent    Left  Speed", "", "  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (7) Failed to connect to localhost port 80: Connection refused"], "stdout": "", "stdout_lines": []}
+...ignoring
+fatal: [172.17.0.3]: FAILED! => {"changed": true, "cmd": "curl localhost", "delta": "0:00:00.019520", "end": "2023-03-03 00:53:56.266145", "msg": "non-zero return code", "rc": 7, "start": "2023-03-03 00:53:56.246625", "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (7) Failed to connect to localhost port 80: Connection refused", "stderr_lines": ["  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current", "                                 Dload  Upload   Total   Spent    Left  Speed", "", "  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (7) Failed to connect to localhost port 80: Connection refused"], "stdout": "", "stdout_lines": []}
+...ignoring
+fatal: [172.17.0.4]: FAILED! => {"changed": true, "cmd": "curl localhost", "delta": "0:00:00.019624", "end": "2023-03-03 00:53:56.327019", "msg": "non-zero return code", "rc": 7, "start": "2023-03-03 00:53:56.307395", "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (7) Failed to connect to localhost port 80: Connection refused", "stderr_lines": ["  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current", "                                 Dload  Upload   Total   Spent    Left  Speed", "", "  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (7) Failed to connect to localhost port 80: Connection refused"], "stdout": "", "stdout_lines": []}
+...ignoring
+
+TASK [Restart the nginx web server in Ubuntu] **********************************************************************************************************
+[WARNING]: Consider using the service module rather than running 'service'.  If you need to use command because service is insufficient you can add
+'warn: false' to this command task or set 'command_warnings=False' in ansible.cfg to get rid of this message.
+changed: [172.17.0.6]
+changed: [172.17.0.5]
+changed: [172.17.0.2]
+changed: [172.17.0.3]
+changed: [172.17.0.4]
+
+TASK [Check if nginx is already running] ***************************************************************************************************************
+fatal: [172.17.0.7]: FAILED! => {"changed": true, "cmd": "curl localhost", "delta": "0:00:00.141931", "end": "2023-03-03 00:53:58.530474", "msg": "non-zero return code", "rc": 7, "start": "2023-03-03 00:53:58.388543", "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (7) Failed to connect to ::1: Cannot assign requested address", "stderr_lines": ["  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current", "                                 Dload  Upload   Total   Spent    Left  Speed", "", "  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (7) Failed to connect to ::1: Cannot assign requested address"], "stdout": "", "stdout_lines": []}
+...ignoring
+fatal: [172.17.0.10]: FAILED! => {"changed": true, "cmd": "curl localhost", "delta": "0:00:00.144118", "end": "2023-03-03 00:53:58.530394", "msg": "non-zero return code", "rc": 7, "start": "2023-03-03 00:53:58.386276", "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (7) Failed to connect to ::1: Cannot assign requested address", "stderr_lines": ["  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current", "                                 Dload  Upload   Total   Spent    Left  Speed", "", "  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (7) Failed to connect to ::1: Cannot assign requested address"], "stdout": "", "stdout_lines": []}
+...ignoring
+fatal: [172.17.0.8]: FAILED! => {"changed": true, "cmd": "curl localhost", "delta": "0:00:00.144347", "end": "2023-03-03 00:53:58.557276", "msg": "non-zero return code", "rc": 7, "start": "2023-03-03 00:53:58.412929", "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (7) Failed to connect to ::1: Cannot assign requested address", "stderr_lines": ["  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current", "                                 Dload  Upload   Total   Spent    Left  Speed", "", "  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (7) Failed to connect to ::1: Cannot assign requested address"], "stdout": "", "stdout_lines": []}
+...ignoring
+fatal: [172.17.0.11]: FAILED! => {"changed": true, "cmd": "curl localhost", "delta": "0:00:00.142062", "end": "2023-03-03 00:53:58.564588", "msg": "non-zero return code", "rc": 7, "start": "2023-03-03 00:53:58.422526", "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (7) Failed to connect to ::1: Cannot assign requested address", "stderr_lines": ["  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current", "                                 Dload  Upload   Total   Spent    Left  Speed", "", "  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (7) Failed to connect to ::1: Cannot assign requested address"], "stdout": "", "stdout_lines": []}
+...ignoring
+fatal: [172.17.0.9]: FAILED! => {"changed": true, "cmd": "curl localhost", "delta": "0:00:00.148544", "end": "2023-03-03 00:53:58.583305", "msg": "non-zero return code", "rc": 7, "start": "2023-03-03 00:53:58.434761", "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (7) Failed to connect to ::1: Cannot assign requested address", "stderr_lines": ["  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current", "                                 Dload  Upload   Total   Spent    Left  Speed", "", "  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (7) Failed to connect to ::1: Cannot assign requested address"], "stdout": "", "stdout_lines": []}
+...ignoring
+
+TASK [Stop the nginx web server in CentOS if it is running already] ************************************************************************************
+skipping: [172.17.0.10]
+skipping: [172.17.0.7]
+skipping: [172.17.0.8]
+skipping: [172.17.0.9]
+skipping: [172.17.0.11]
+
+TASK [Start the nginx web server in CentOS] ************************************************************************************************************
+changed: [172.17.0.10]
+changed: [172.17.0.7]
+changed: [172.17.0.8]
+changed: [172.17.0.9]
+changed: [172.17.0.11]
+
+PLAY RECAP *********************************************************************************************************************************************
+172.17.0.10                : ok=13   changed=8    unreachable=0    failed=0    skipped=1    rescued=0    ignored=1   
+172.17.0.11                : ok=13   changed=8    unreachable=0    failed=0    skipped=1    rescued=0    ignored=1   
+172.17.0.2                 : ok=12   changed=7    unreachable=0    failed=0    skipped=0    rescued=0    ignored=1   
+172.17.0.3                 : ok=12   changed=7    unreachable=0    failed=0    skipped=0    rescued=0    ignored=1   
+172.17.0.4                 : ok=12   changed=7    unreachable=0    failed=0    skipped=0    rescued=0    ignored=1   
+172.17.0.5                 : ok=12   changed=7    unreachable=0    failed=0    skipped=0    rescued=0    ignored=1   
+172.17.0.6                 : ok=12   changed=7    unreachable=0    failed=0    skipped=0    rescued=0    ignored=1   
+172.17.0.7                 : ok=13   changed=8    unreachable=0    failed=0    skipped=1    rescued=0    ignored=1   
+172.17.0.8                 : ok=13   changed=8    unreachable=0    failed=0    skipped=1    rescued=0    ignored=1   
+172.17.0.9                 : ok=13   changed=8    unreachable=0    failed=0    skipped=1    rescued=0    ignored=1
+
+jegan@tektutor.org:~/ansible-feb-2023/Day4/after-refactoring-v2$ <b>curl http://localhost:8001</b>
+<html>
+	<head>
+		<title>Welcome to DevOps!</title>
+	</head>
+
+	<body>
+		<h3>Provisioned by Docker</h3>
+		<h3>Configured by Ansible</h3>
+		<h3>Hostname - ubuntu-001</h3>
+		<h3>OS -Debian - Ubuntu v16.04</h3>
+		<h3>IP Address - 172.17.0.2</h3>
+	</body>
+</html>
+jegan@tektutor.org:~/ansible-feb-2023/Day4/after-refactoring-v2$ <b>curl http://localhost:9001</b>
+<html>
+	<head>
+		<title>Welcome to DevOps!</title>
+	</head>
+
+	<body>
+		<h3>Provisioned by Docker</h3>
+		<h3>Configured by Ansible</h3>
+		<h3>Hostname - centos-001</h3>
+		<h3>OS -RedHat - CentOS v7.9</h3>
+		<h3>IP Address - 172.17.0.7</h3>
+	</body>
+</html>
+</pre>
+
 ## ⛹️‍♂️ Lab - Writing a custom Ansible module and invoking it from a playbook
 ```
 cd ~/ansible-feb-2023
