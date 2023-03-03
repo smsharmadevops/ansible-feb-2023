@@ -426,3 +426,8 @@ This may also be found at: /home/jegan/.jenkins/secrets/initialAdminPassword
 2023-03-03 05:32:49.383+0000 [id=151]	INFO	h.m.DownloadService$Downloadable#load: Obtained the updated data file for hudson.tasks.Maven.MavenInstaller
 2023-03-03 05:32:49.385+0000 [id=151]	INFO	hudson.util.Retrier#start: Performed the action check updates server successfully at the attempt #1
 </pre>
+
+#### Accessing Jenkins Dashboard from your RPS Chrome web browser
+<pre>
+http://localhost:8080
+</pre>
