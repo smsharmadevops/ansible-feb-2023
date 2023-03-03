@@ -450,4 +450,6 @@ Expected output
 ![Manage Jenkins ==> Manage Plugins ==> Available](jenkins10.png)
 ![Manage Jenkins ==> Manage Plugins ==> Available](jenkins11.png)
 Click on Install without Restart
+![Manage Jenkins ==> Manage Plugins ==> Available](jenkins12.png)
+![Manage Jenkins ==> Manage Plugins ==> Available](jenkins13.png)
 
