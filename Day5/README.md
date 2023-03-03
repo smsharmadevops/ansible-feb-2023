@@ -437,4 +437,5 @@ Expected output
 
 #### Install Suggested Plugins
 ![Install Suggested Plugins](jenkins2.png)
+![Install Suggested Plugins](jenkins3.png)
 
