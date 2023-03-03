@@ -115,27 +115,58 @@ Implement a custom ansible module in a file named add.py. It will accept two flo
 ## Install Ansible Tower opensource
 ```
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-
 sudo install minikube-linux-amd64 /usr/local/bin/minikube
-
 minikube delete
-
 minikube start --addons=ingress --cpus=4 --cni=flannel --install-addons=true --kubernetes-version=stable --memory=8g
-
 minikube status
 
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin
-
 kubectl cluster-info
 kubectl get nodes
-
-
-
-kubectl apply -f https://raw.githubusercontent.com/ansible/awx-operator/0.12.0/deploy/awx-operator.yaml
 ```
+
+Delete the existing awx-operator as it is very old
+```
+kubectl delete -f https://raw.githubusercontent.com/ansible/awx-operator/0.12.0/deploy/awx-operator.yaml
+kubectl delete -f awx.yml
+```
+
+Install HELM Kubernets Package Manager 
+```
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/Downloads$ <b>curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3</b>
+jegan@tektutor.org:~/Downloads$ <b>chmod 700 get_helm.sh</b>
+jegan@tektutor.org:~/Downloads$ <b>./get_helm.sh</b>
+</pre>
+
+
+Deploy the latest version of AWX Operator
+```
+wget https://github.com/ansible/awx-operator/releases/download/1.2.0/awx-operator-1.2.0.tgz
+
+
+```
+Expected output
+<pre>
+jegan@tektutor.org:~/Downloads$ <b>helm install awx awx-operator-1.2.0.tgz</b>
+NAME: awx
+LAST DEPLOYED: Fri Mar  3 05:25:15 2023
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+AWX Operator installed with Helm Chart version 1.2.0
+</pre>
+
 
 Create an awx.yml with below content
 ```
@@ -153,10 +184,48 @@ spec:
 Run the below command
 ```
 kubectl apply -f awx.yml
-kubectl logs -f deployment/awx-operator
-kubectl get pods -l "app.kubernetes.io/managed-by=awx-operator"
-kubectl get svc -l "app.kubernetes.io/managed-by=awx-operator"
-kubectl get svc ansible-awx-service
-nohup minikube tunnel &
-kubectl port-forward svc/ansible-awx-service --address 0.0.0.0 32483:80 &> /dev/null &
 ```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/Downloads$ <b>kubectl get po</b>
+NAME                                              READY   STATUS    RESTARTS   AGE
+awx-demo-9466b76d5-n28st                          4/4     Running   0          4m52s
+awx-demo-postgres-13-0                            1/1     Running   0          5m29s
+awx-operator-controller-manager-ddfcd98fd-h8r9b   2/2     Running   0          8m4s
+jegan@tektutor.org:~/Downloads$ <b>kubectl get svc</b>
+NAME                                              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+awx-demo-postgres-13                              ClusterIP   None            <none>        5432/TCP       5m43s
+awx-demo-service                                  NodePort    10.101.99.132   <none>        80:32057/TCP   5m8s
+awx-operator-controller-manager-metrics-service   ClusterIP   10.96.126.114   <none>        8443/TCP       8m18s
+kubernetes                                        ClusterIP   10.96.0.1       <none>        443/TCP        45m
+jegan@tektutor.org:~/Downloads$ <b>kubectl describe svc awx-demo-service</b>
+Name:                     awx-demo-service
+Namespace:                default
+Labels:                   app.kubernetes.io/component=awx
+                          app.kubernetes.io/managed-by=awx-operator
+                          app.kubernetes.io/name=awx-demo
+                          app.kubernetes.io/operator-version=1.2.0
+                          app.kubernetes.io/part-of=awx-demo
+Annotations:              <none>
+Selector:                 app.kubernetes.io/component=awx,app.kubernetes.io/managed-by=awx-operator,app.kubernetes.io/name=awx-demo
+Type:                     NodePort
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.101.99.132
+IPs:                      10.101.99.132
+Port:                     http  80/TCP
+TargetPort:               8052/TCP
+NodePort:                 http  32057/TCP
+Endpoints:                10.244.0.16:8052
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+jegan@tektutor:~/Downloads$ minikube service awx-demo-service
+|-----------|------------------|-------------|---------------------------|
+| NAMESPACE |       NAME       | TARGET PORT |            URL            |
+|-----------|------------------|-------------|---------------------------|
+| default   | awx-demo-service | http/80     | http://192.168.49.2:32057 |
+|-----------|------------------|-------------|---------------------------|
+🎉  Opening service default/awx-demo-service in default browser...
+</pre>
