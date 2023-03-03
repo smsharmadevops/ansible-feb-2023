@@ -446,4 +446,6 @@ Expected output
 ![Create user](jenkins6.png)
 ![Create user](jenkins7.png)
 ![Create user](jenkins8.png)
+![Manage Jenkins ==> Manage Plugins](jenkins9.png)
+![Manage Jenkins ==> Manage Plugins ==> Available](jenkins10.png)
 
