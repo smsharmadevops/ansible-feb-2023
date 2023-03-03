@@ -1,0 +1,20 @@
+- name: This playbook will install Adobe Acrobat Reader and VLC Player on Windows 2019 server
+  hosts: all 
+  tasks:
+    - name: Install Adobe Acrobat Reader tool
+      win_chocolatey:
+         name: adobereader 
+         state: latest 
+
+    - name: Install VLC Media Player 
+      win_chocolatey:
+         name: vlc 
+         state: latest
+
+    - name: Install 7zip and use a file version for the installation check
+      ansible.windows.win_package:
+        path: C:\temp\7z.exe
+        creates_path: C:\Program Files\7-Zip\7z.exe
+        creates_version: 16.04
+        state: present
+
