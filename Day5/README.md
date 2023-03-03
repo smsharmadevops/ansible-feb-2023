@@ -431,3 +431,6 @@ This may also be found at: /home/jegan/.jenkins/secrets/initialAdminPassword
 <pre>
 http://localhost:8080
 </pre>
+
+Expected output
+![Jenkins initial admin page](jenkins1.png)
