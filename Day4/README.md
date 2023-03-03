@@ -151,8 +151,8 @@ jegan@tektutor.org:~/Downloads$ <b>./get_helm.sh</b>
 Deploy the latest version of AWX Operator
 ```
 wget https://github.com/ansible/awx-operator/releases/download/1.2.0/awx-operator-1.2.0.tgz
-
-
+helm install awx awx-operator-1.2.0.tgz
+helm list
 ```
 Expected output
 <pre>
@@ -165,6 +165,10 @@ REVISION: 1
 TEST SUITE: None
 NOTES:
 AWX Operator installed with Helm Chart version 1.2.0
+
+jegan@tektutor.org:~/Downloads$ <b>helm list</b>
+NAME	NAMESPACE	REVISION	UPDATED                                	STATUS  	CHART             	APP VERSION
+awx 	default  	1       	2023-03-03 05:25:15.489203383 +0530 IST	deployed	awx-operator-1.2.0	1.2.0      
 </pre>
 
 
@@ -174,11 +178,9 @@ Create an awx.yml with below content
 apiVersion: awx.ansible.com/v1beta1
 kind: AWX
 metadata:
-  name: ansible-awx
+  name: awx-demo
 spec:
   service_type: nodeport
-  ingress_type: none
-  hostname: ansible-awx.example.com
 ```
 
 Run the below command
@@ -193,12 +195,14 @@ NAME                                              READY   STATUS    RESTARTS   A
 awx-demo-9466b76d5-n28st                          4/4     Running   0          4m52s
 awx-demo-postgres-13-0                            1/1     Running   0          5m29s
 awx-operator-controller-manager-ddfcd98fd-h8r9b   2/2     Running   0          8m4s
+
 jegan@tektutor.org:~/Downloads$ <b>kubectl get svc</b>
 NAME                                              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
 awx-demo-postgres-13                              ClusterIP   None            <none>        5432/TCP       5m43s
 awx-demo-service                                  NodePort    10.101.99.132   <none>        80:32057/TCP   5m8s
 awx-operator-controller-manager-metrics-service   ClusterIP   10.96.126.114   <none>        8443/TCP       8m18s
 kubernetes                                        ClusterIP   10.96.0.1       <none>        443/TCP        45m
+
 jegan@tektutor.org:~/Downloads$ <b>kubectl describe svc awx-demo-service</b>
 Name:                     awx-demo-service
 Namespace:                default
@@ -221,7 +225,8 @@ Endpoints:                10.244.0.16:8052
 Session Affinity:         None
 External Traffic Policy:  Cluster
 Events:                   <none>
-jegan@tektutor:~/Downloads$ minikube service awx-demo-service
+
+jegan@tektutor.org:~/Downloads$ minikube service awx-demo-service
 |-----------|------------------|-------------|---------------------------|
 | NAMESPACE |       NAME       | TARGET PORT |            URL            |
 |-----------|------------------|-------------|---------------------------|
@@ -229,3 +234,6 @@ jegan@tektutor:~/Downloads$ minikube service awx-demo-service
 |-----------|------------------|-------------|---------------------------|
 🎉  Opening service default/awx-demo-service in default browser...
 </pre>
+
+If everything went well, you will get the below page in your default web browser on the lab machine
+![Opensource Ansible Tower - AWX](awx-login-page.png)
