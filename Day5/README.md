@@ -752,3 +752,7 @@ lrwxrwxrwx 1 root root 23 Mar  3 11:00 /usr/bin/javac -> /etc/alternatives/javac
 jegan@tektutor.org  ~/Downloads/gradle-7.6.1 $ <b>ls -l /etc/alternatives/javac</b>
 lrwxrwxrwx 1 root root 44 Mar  3 11:00 /etc/alternatives/javac -> /usr/lib/jvm/java-11-openjdk-amd64/bin/javac
 </pre>
+
+### Exporting the JDK and Grade path to environment settings
+Edit ~/.bashrc file and at the end of the file paste the below
+![~/.bashrc](jenkins15.png)
