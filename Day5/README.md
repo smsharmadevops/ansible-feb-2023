@@ -740,3 +740,15 @@ bin  init.d  lib  LICENSE  NOTICE  README
 jegan@tektutor.org  ~/Downloads/gradle-7.6.1 $ <b>pwd</b>
 <b>/home/jegan/Downloads/gradle-7.6.1</b>
 </pre>
+
+Similarly, find your JAVA Home folder
+<pre>
+jegan@tektutor.org  ~/Downloads/gradle-7.6.1 $ <b>which javac</b>
+/usr/bin/javac
+
+jegan@tektutor.org  ~/Downloads/gradle-7.6.1 $ <b>ls -l /usr/bin/javac</b>
+lrwxrwxrwx 1 root root 23 Mar  3 11:00 /usr/bin/javac -> /etc/alternatives/javac
+
+jegan@tektutor.org  ~/Downloads/gradle-7.6.1 $ <b>ls -l /etc/alternatives/javac</b>
+lrwxrwxrwx 1 root root 44 Mar  3 11:00 /etc/alternatives/javac -> /usr/lib/jvm/java-11-openjdk-amd64/bin/javac
+</pre>
