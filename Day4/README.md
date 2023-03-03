@@ -11,7 +11,7 @@ ansible-playbook install-nginx-playbook.yml
 ```
 
 Expected output
-<pre>
+```
 jegan@tektutor.org:~/ansible-feb-2023/Day4/after-refactoring-v2$ <b>ansible-playbook install-nginx-playbook.yml</b>
 [WARNING]: Invalid characters were found in group names but not replaced, use -vvvv to see details
 
@@ -205,7 +205,7 @@ jegan@tektutor.org:~/ansible-feb-2023/Day4/after-refactoring-v2$ <b>curl http://
 		<h3>IP Address - 172.17.0.7</h3>
 	</body>
 </html>
-</pre>
+```
 
 ## ⛹️‍♂️ Lab - Writing a custom Ansible module and invoking it from a playbook
 ```
