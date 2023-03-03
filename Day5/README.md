@@ -513,3 +513,35 @@ winrm enumerate winrm/config/Listener
 ```
 pip install "pywinrm>=0.3.0"
 ```
+
+## Lab - Pinging a windows ansible node from a Linux Ansible Controller Machine
+```
+cd ~/ansible-feb-2023
+git pull
+
+cd Day5/windows-ansible-node/
+ansible -i inventory -m win_ping
+```
+
+Expected output
+<pre>
+jegan@tektutor.org $ <b>ansible -i inventory all -m win_ping</b>
+192.168.180.130 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+</pre>
+
+## Lab - Installing softwares on Windows ansible node from a Linux ACM
+```
+cd ~/ansible-feb-2023
+git pull
+
+cd Day5/windows-ansible-node/
+ansible-playbook -i inventory playbook.yml
+```
+
+Expected output
+<pre>
+
+</pre>
