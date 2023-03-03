@@ -434,3 +434,7 @@ http://localhost:8080
 
 Expected output
 ![Jenkins initial admin page](jenkins1.png)
+
+#### Install Suggested Plugins
+![Install Suggested Plugins](jenkins2.png)
+
