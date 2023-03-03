@@ -756,3 +756,33 @@ lrwxrwxrwx 1 root root 44 Mar  3 11:00 /etc/alternatives/javac -> /usr/lib/jvm/j
 ### Exporting the JDK and Grade path to environment settings
 Edit ~/.bashrc file and at the end of the file paste the below
 ![~/.bashrc](jenkins15.png)
+
+In order to apply the ~/.bashrc changes, you need to source the ~/.bashrc as shown below
+<pre>
+jegan@tektutor.org:~/Downloads/gradle-7.6.1$ <b>source ~/.bashrc</b>
+jegan@tektutor.org:~/Downloads/gradle-7.6.1$ <b>gradle --version</b>
+
+Welcome to Gradle 7.6.1!
+
+Here are the highlights of this release:
+ - Added support for Java 19.
+ - Introduced `--rerun` flag for individual task rerun.
+ - Improved dependency block for test suites to be strongly typed.
+ - Added a pluggable system for Java toolchains provisioning.
+
+For more details see https://docs.gradle.org/7.6.1/release-notes.html
+
+
+------------------------------------------------------------
+Gradle 7.6.1
+------------------------------------------------------------
+
+Build time:   2023-02-24 13:54:42 UTC
+Revision:     3905fe8ac072bbd925c70ddbddddf4463341f4b4
+
+Kotlin:       1.7.10
+Groovy:       3.0.13
+Ant:          Apache Ant(TM) version 1.10.11 compiled on July 10 2021
+JVM:          11.0.18 (Ubuntu 11.0.18+10-post-Ubuntu-0ubuntu122.04)
+OS:           Linux 5.19.0-35-generic amd64
+</pre>
