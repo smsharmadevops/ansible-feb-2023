@@ -439,3 +439,6 @@ Expected output
 ![Install Suggested Plugins](jenkins2.png)
 ![Install Suggested Plugins](jenkins3.png)
 
+
+#### Create user
+![Create user](jenkins4.png)
