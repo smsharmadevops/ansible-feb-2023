@@ -4,6 +4,7 @@
 ```
 sudo apt install openjdk-11-jdk -y
 ```
+
 Expected output
 <pre>
 jegan@tektutor.org  ~/Downloads $ <b>sudo apt install openjdk-11-jdk -y</b>
