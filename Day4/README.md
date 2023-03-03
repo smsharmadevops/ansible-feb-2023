@@ -12,7 +12,7 @@ ansible-playbook install-nginx-playbook.yml
 
 Expected output
 ```
-jegan@tektutor.org:~/ansible-feb-2023/Day4/after-refactoring-v2$ <b>ansible-playbook install-nginx-playbook.yml</b>
+jegan@tektutor.org:~/ansible-feb-2023/Day4/after-refactoring-v2$ ansible-playbook install-nginx-playbook.yml
 [WARNING]: Invalid characters were found in group names but not replaced, use -vvvv to see details
 
 PLAY [This playbook will install,configure nginx web server and will deploy a custom web page into custom web root folder] *****************************
@@ -177,7 +177,7 @@ PLAY RECAP *********************************************************************
 172.17.0.8                 : ok=13   changed=8    unreachable=0    failed=0    skipped=1    rescued=0    ignored=1   
 172.17.0.9                 : ok=13   changed=8    unreachable=0    failed=0    skipped=1    rescued=0    ignored=1
 
-jegan@tektutor.org:~/ansible-feb-2023/Day4/after-refactoring-v2$ <b>curl http://localhost:8001</b>
+jegan@tektutor.org:~/ansible-feb-2023/Day4/after-refactoring-v2$ curl http://localhost:8001
 <html>
 	<head>
 		<title>Welcome to DevOps!</title>
@@ -191,7 +191,7 @@ jegan@tektutor.org:~/ansible-feb-2023/Day4/after-refactoring-v2$ <b>curl http://
 		<h3>IP Address - 172.17.0.2</h3>
 	</body>
 </html>
-jegan@tektutor.org:~/ansible-feb-2023/Day4/after-refactoring-v2$ <b>curl http://localhost:9001</b>
+jegan@tektutor.org:~/ansible-feb-2023/Day4/after-refactoring-v2$ curl http://localhost:9001
 <html>
 	<head>
 		<title>Welcome to DevOps!</title>
