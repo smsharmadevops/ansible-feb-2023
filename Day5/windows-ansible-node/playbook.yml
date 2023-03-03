@@ -11,10 +11,10 @@
          name: vlc 
          state: latest
 
-    - name: Install 7zip and use a file version for the installation check
-      ansible.windows.win_package:
-        path: C:\temp\7z.exe
-        creates_path: C:\Program Files\7-Zip\7z.exe
-        creates_version: 16.04
-        state: present
+           #    - name: Install 7zip and use a file version for the installation check
+           #      ansible.windows.win_package:
+           #        path: C:\temp\7z.exe
+           #        creates_path: C:\Program Files\7-Zip\7z.exe
+           #       creates_version: 16.04
+           #       state: present
 
