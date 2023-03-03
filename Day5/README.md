@@ -541,7 +541,8 @@ cd Day5/windows-ansible-node/
 ansible-playbook -i inventory playbook.yml
 ```
 
-Expected output
-<pre>
 
-</pre>
+# Please give your training feedback here, kindly use the RPS Lab machine 
+```
+https://tcheck.co/2HK82d
+```
