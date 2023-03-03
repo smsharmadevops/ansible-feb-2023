@@ -237,3 +237,22 @@ jegan@tektutor.org:~/Downloads$ minikube service awx-demo-service
 
 If everything went well, you will get the below page in your default web browser on the lab machine
 ![Opensource Ansible Tower - AWX](awx-login-page.png)
+
+Finding the AWX Ansible Tower password
+```
+kubectl get secret awx-demo-admin-password -o jsonpath="{.data.password}" | base64 --decode
+```
+Expected output
+<pre>
+jegan@tektutor.org:~/Downloads$ <b>kubectl get secret awx-demo-admin-password -o jsonpath="{.data.password}" | base64 --decode</b>
+NoQvhzzNTB1pcF97rQt3wBmR16XH4m26
+</pre>
+
+AWX Login Credentials
+```
+username - admin
+password - NoQvhzzNTB1pcF97rQt3wBmR16XH4m26
+```
+
+Expected output
+![AWX - Ansible Tower Dashboard](awx-dashboard.png)
