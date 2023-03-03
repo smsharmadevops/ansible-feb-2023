@@ -463,3 +463,56 @@ password - NoQvhzzNTB1pcF97rQt3wBmR16XH4m26
 
 Expected output
 ![AWX - Ansible Tower Dashboard](awx-dashboard.png)
+
+
+## What is Agile?
+- fail-fast approch
+- helps in getting frequent feedback from Customer
+- any deviation from plan has to be communicated at the earliest to the Customer/Product Owner
+
+## What is SCRUM?
+- an Agile Framework that has some set of process and tools
+- if we the SCRUM process and the tools as suggested by SCRUM, we will be able to follow and meet the Agile Practices
+- this help the team deliver the project binaries more frequently to the customer with confidence
+
+## Waterfall vs SCRUM Framework
+- In Waterfall the customer feedback comes on a monthly/quaterly/bi-yearly basic depending on how frequently the release are shared to the customer
+- In SCRUM, the Sprint duration will be 
+  - 1 week ( 5 Days )
+  - 2 weeks ( 10 Days )
+  - Upto max 6 weeks ( 30 Days )
+- In SCRUM based, we can expect the customer feedback within in a week time, hence we can address the deviation at the earliest possible
+  and reduce the cost of fixing.  This helps in bringing down the go to market time.
+  
+## What is DevOps?
+- a way of working or a style of working
+- where the team will frequent commit the code to the Version Control
+- i.e several times a day the code will committed to the version control as and when the code is logically complete
+- helps you identify the bugs early, mostly during development or testing stage itself avoiding production issues
+- you will be using a set of tools like
+  - Jenkins, TeamCity, Travis, TFS, Bamboo
+  - Git/GitHub
+  - Gradle/Maven
+  - Kubernetes/OpenShift
+  - Test Frameworks
+    - Junit/Mockito - Java
+    - Jasmine/Karma - JavaScript, NodeJS, Angular, TypeScript
+    - Google Test/Google Mock - C/C++
+    - NUnit/Moq - C#
+    - BDD Frameworks - Specflow(C#), Cucumber(C++,Java,Ruby,etc.,)  
+
+## What is Continuous Integration (CI)?
+- the changes made by Developer,QA and the Operation Teams will be committed frequently to the Version Control
+- In Jenkins or similar Builder Servers you will create CI Job for your code repository to monitor code changes
+- Whenever Jenkins detect code commits, it trigger a build and runs the test cases as part of the build
+- Jenkins then shares the Build Report by email
+- your code will be integrated several a times with other team member's code on a development branch
+- the intention is to find bugs early and make your code stable as much as possible
+
+## What is Continuous Delivery(CD)?
+- it is an extension of Continuous Integration(CI)
+- Whatever product binary passes the Continuous Integration(CI) are further delivered automatically to QA environment for QA automated testing
+
+## What is Continuous Deployment(CD)?
+- it is an extension of Continuous Delivery
+- The QA certified binaries are then deployed onto production environment or customer's environment so that they can review and give feedback
